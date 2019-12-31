@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>Welcome Home</title>
+<script>
+ function checkForm(){
+  alert('works');
+  document.getElementById("demoxss").innerHTML = document.getElementById('password').value;
+  document.getElementById("demoxss2").innerHTML = document.getElementById('username').value;
+  alert(document.getElementById('password').value);
+   alert(document.getElementById('username').value);
+  
+  return true;
+}
+ var pos=document.URL.indexOf("password=")+4;
+ document.write(document.URL.substring(pos,document.URL.length));
+</script>
+</head>
+<body>
+<h1>Page one demo</h1>
+<div id=demoxss2></div>
+<UL>
+<LI><a href=page1.html>Page One</a></LI>
+<LI><a href=page2.html>Page Two 222</a></LI>
+<LI><a href=page3.html>Page Three 333</a></LI>
+<LI><a href="http://zero.webappsecurity.com">External Page</a></LI>
+<form method="get" onsubmit="return checkForm(); novalidate="novalidate"">
+  Name of new user: <input id="username" type="text" name="username">
+  Password for new user: <input id="password" type="password" name="user_passwd">
+  <input type="submit" name="action" value="Create User" onsubmit="return checkForm()">
+</form>
+<script>checkForm()</script>
+<div id=demoxss></div>
+</UL>
+
+</body>
+</html>

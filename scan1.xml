@@ -1,0 +1,1901 @@
+﻿<Scan><Name>DemoScanAllChecksHtmlJS</Name><PolicyName>All Checks</PolicyName><StartTime>12/31/2019 3:48:08 PM</StartTime><Duration>00:01:49.8899938</Duration><Issues><Issue><CheckTypeID>Vulnerability</CheckTypeID><EngineType>CUSTOM</EngineType><URL>http://127.0.0.1:80/page2.html</URL><Scheme>http</Scheme><Host>127.0.0.1</Host><Port>80</Port><VulnerableSession><![CDATA[GET /page2.html HTTP/1.1
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Crawl"; SID="629F6C80F8F5C1627601B861C0F1AA02"; SessionType="ExternalAddedToCrawl"; CrawlType="None"; AttackType="None"; OriginatingEngineID="00000000-0000-0000-0000-000000000000"; ThreadId="3"; ThreadType="CrawlBreadthFirstDBReader"; 
+X-RequestManager-Memo: sid="339"; smi="0"; sc="1"; ID="815e429c-341b-4765-a34c-25dcb763dbda"; 
+X-Request-Memo: ID="b6b11dd3-7419-45c5-90d8-446c35000453"; sc="1"; tid="186"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></VulnerableSession><TriggerSession null="1" /><VulnerabilityID>3508</VulnerabilityID><Severity>1</Severity><Name>System Information Leak: Internal IP</Name><ReportSection><Name>Summary</Name><SectionText><![CDATA[A string matching an internal/reserved IPv4 or IPv6 address range was discovered. This may disclose information about the IP addressing scheme of the internal network and can be valuable to attackers.
+Internal IPv4/IPv6 ranges are:<br />10.x.x.x<br />172.16.x.x through 172.31.x.x<br />192.168.x.x<br />fd00::x<br /> If not a part of techical documentation, recommendations include removing the string from the production server.]]></SectionText></ReportSection><ReportSection><Name>Implication</Name><SectionText></SectionText></ReportSection><ReportSection><Name>Execution</Name><SectionText></SectionText></ReportSection><ReportSection><Name>Fix</Name><SectionText><![CDATA[<br />
+This issue can appear for several reasons. The most common is that the application or webserver error message discloses the IP address. This can be solved by determining where to turn off detailed error messages in the application or webserver. Another common reason is due to a comment located in the source of the webpage. This can easily be removed from the source of the page.]]></SectionText></ReportSection><ReportSection><Name>Reference Info</Name><SectionText></SectionText></ReportSection><RawResponse><![CDATA[HTTP/1.1 200 OK
+Content-Type: text/html
+Last-Modified: Tue, 31 Dec 2019 15:41:10 GMT
+Accept-Ranges: bytes
+ETag: "fd1bc0b9f0bfd51:0"
+Server: Microsoft-IIS/10.0
+X-Powered-By: ASP.NET
+Date: Tue, 31 Dec 2019 15:48:20 GMT
+Content-Length: 1215
+
+<html>
+<head>
+<title>Page Two</title>
+<script>
+ function checkForm(){
+  alert('works');
+  document.getElementById("demoxss").innerHTML = document.getElementById('password').value;
+  document.getElementById("demoxss2").innerHTML = document.getElementById('username').value;
+  alert(document.getElementById('password').value);
+   alert(document.getElementById('username').value);
+  
+  return true;
+}
+ var pos=document.URL.indexOf("password=")+4;
+ document.write(document.URL.substring(pos,document.URL.length));
+</script>
+</head>
+<body>
+<h1>Page two</h1>
+<div id=demoxss2></div>
+<UL>
+<LI><a href=page1.html>Page One</a></LI>
+<LI><a href=page2.html>Page Two 222</a></LI>
+<LI><a href=page3.html>Page Three 333</a></LI>
+<LI><a href="http://zero.webappsecurity.com">External Page</a></LI>
+<form method="get" onsubmit="return checkForm(); novalidate="novalidate"">
+  Name of new user: <input id="username" type="text" name="username">
+  Password for new user: <input id="password" type="password" name="user_passwd">
+  <input type="submit" name="action" value="Create User" onsubmit="return checkForm()">
+</form>
+<script>checkForm()</script>
+<div id=demoxss></div>
+</UL>
+</body>
+</html>
+]]></RawResponse></Issue><Issue><CheckTypeID>Vulnerability</CheckTypeID><EngineType>11542</EngineType><URL>http://127.0.0.1:80/page2.html</URL><Scheme>http</Scheme><Host>127.0.0.1</Host><Port>80</Port><VulnerableSession><![CDATA[GET /page2.html HTTP/1.1
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Crawl"; SID="629F6C80F8F5C1627601B861C0F1AA02"; SessionType="ExternalAddedToCrawl"; CrawlType="None"; AttackType="None"; OriginatingEngineID="00000000-0000-0000-0000-000000000000"; ThreadId="3"; ThreadType="CrawlBreadthFirstDBReader"; 
+X-RequestManager-Memo: sid="339"; smi="0"; sc="1"; ID="815e429c-341b-4765-a34c-25dcb763dbda"; 
+X-Request-Memo: ID="b6b11dd3-7419-45c5-90d8-446c35000453"; sc="1"; tid="186"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></VulnerableSession><TriggerSession null="1" /><VulnerabilityID>4722</VulnerabilityID><Severity>3</Severity><Name>Insecure Transport</Name><ReportSection><Name>Summary</Name><SectionText><![CDATA[Any area of a web application that possibly contains sensitive information or access to privileged functionality such as remote site administration functionality should utilize SSL or another form of encryption to prevent login information from being sniffed or otherwise intercepted or stolen.   ~FullURL~ has failed this policy. Recommendations include ensuring that sensitive areas of your web application have proper encryption protocols in place to prevent login information and other data that could be helpful to an attacker from being intercepted.]]></SectionText></ReportSection><ReportSection><Name>Implication</Name><SectionText><![CDATA[<br />An attacker who exploited this design vulnerability would be able to utilize the information to escalate their method of attack,  possibly leading to impersonation of a legitimate user, the theft of proprietary data, or execution of actions not intended by the application developers.]]></SectionText></ReportSection><ReportSection><Name>Execution</Name><SectionText></SectionText></ReportSection><ReportSection><Name>Fix</Name><SectionText><![CDATA[<br /><b>For Security Operations:</b><br />Ensure that sensitive areas of your web application have proper encryption protocols in place to prevent login information and other data that could be helpful to an attacker from being intercepted.
+<br /><br /><b>For Development:</b><br />Ensure that sensitive areas of your web application have proper encryption protocols in place to prevent login information and other data that could be helpful to an attacker from being intercepted.
+<br /><br /><b>For QA:</b><br />Test the application not only from the perspective of a normal user, but also from the perspective of a malicious one.]]></SectionText></ReportSection><ReportSection><Name>Reference Info</Name><SectionText></SectionText></ReportSection><RawResponse><![CDATA[HTTP/1.1 200 OK
+Content-Type: text/html
+Last-Modified: Tue, 31 Dec 2019 15:41:10 GMT
+Accept-Ranges: bytes
+ETag: "fd1bc0b9f0bfd51:0"
+Server: Microsoft-IIS/10.0
+X-Powered-By: ASP.NET
+Date: Tue, 31 Dec 2019 15:48:20 GMT
+Content-Length: 1215
+
+<html>
+<head>
+<title>Page Two</title>
+<script>
+ function checkForm(){
+  alert('works');
+  document.getElementById("demoxss").innerHTML = document.getElementById('password').value;
+  document.getElementById("demoxss2").innerHTML = document.getElementById('username').value;
+  alert(document.getElementById('password').value);
+   alert(document.getElementById('username').value);
+  
+  return true;
+}
+ var pos=document.URL.indexOf("password=")+4;
+ document.write(document.URL.substring(pos,document.URL.length));
+</script>
+</head>
+<body>
+<h1>Page two</h1>
+<div id=demoxss2></div>
+<UL>
+<LI><a href=page1.html>Page One</a></LI>
+<LI><a href=page2.html>Page Two 222</a></LI>
+<LI><a href=page3.html>Page Three 333</a></LI>
+<LI><a href="http://zero.webappsecurity.com">External Page</a></LI>
+<form method="get" onsubmit="return checkForm(); novalidate="novalidate"">
+  Name of new user: <input id="username" type="text" name="username">
+  Password for new user: <input id="password" type="password" name="user_passwd">
+  <input type="submit" name="action" value="Create User" onsubmit="return checkForm()">
+</form>
+<script>checkForm()</script>
+<div id=demoxss></div>
+</UL>
+</body>
+</html>
+]]></RawResponse></Issue><Issue><CheckTypeID>Best Practices</CheckTypeID><EngineType>CUSTOM</EngineType><URL>http://127.0.0.1:80/page2.html</URL><Scheme>http</Scheme><Host>127.0.0.1</Host><Port>80</Port><VulnerableSession><![CDATA[GET /page2.html HTTP/1.1
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Crawl"; SID="629F6C80F8F5C1627601B861C0F1AA02"; SessionType="ExternalAddedToCrawl"; CrawlType="None"; AttackType="None"; OriginatingEngineID="00000000-0000-0000-0000-000000000000"; ThreadId="3"; ThreadType="CrawlBreadthFirstDBReader"; 
+X-RequestManager-Memo: sid="339"; smi="0"; sc="1"; ID="815e429c-341b-4765-a34c-25dcb763dbda"; 
+X-Request-Memo: ID="b6b11dd3-7419-45c5-90d8-446c35000453"; sc="1"; tid="186"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></VulnerableSession><TriggerSession null="1" /><VulnerabilityID>5546</VulnerabilityID><Severity>0</Severity><Name>Compliance Failure: Missing Privacy Policy</Name><ReportSection><Name>Summary</Name><SectionText><![CDATA[<p>A privacy policy was not supplied by the web application within the scope of this audit. Many legislative initiatives require that organizations place a publicly accessible document within their web application that defines their website’s privacy policy.  As a general rule, these privacy policies must detail what information an organization collects, the purpose for collecting it, potential avenues of disclosure, and methods for addressing potential grievances.</p><p>Various laws governing privacy policies include the Gramm-Leach-Bliley Act, Health Insurance Portability and Accountability Act (HIPAA), the California Online Privacy Protection Act of 2003, European Union's Data Protection Directive and others.</p>]]></SectionText></ReportSection><ReportSection><Name>Implication</Name><SectionText><![CDATA[Most privacy laws are created to protect residents who are users of the website. Hence, organizations from any part of the world must adhere to these laws if they cater to customers residing in these geographical areas. Failing to do so could result in a lawsuit by the corresponding government against the organization.]]></SectionText></ReportSection><ReportSection><Name>Execution</Name><SectionText><![CDATA[<p>All of the web pages accessible within the scope of the scan are sampled for textual content that often constitutes a privacy policy statement. A violation is reported upon completion of the web application crawl without a successful match against any of the web pages.</p><p>Note that the privacy policy of your application could be located on another host or within a section of the site that was not configured as part of the scan. To validate, please try to access the privacy policy of your website and check to see if it was part of the scan.</p><br /><drc_privacy />]]></SectionText></ReportSection><ReportSection><Name>Fix</Name><SectionText><![CDATA[Declare a comprehensive privacy policy for the website, and ensure that it is accessible from every page that seeks personal information from users. To verify the fix, rescan the site in order to discover and audit the newly added resources.
+
+<br /><br /><b>Descriptions: </b><br />
+Any standard web application privacy policy should include the following components:
+<ul><li>A description of the intended purpose for collecting the data.</li><li>A description of the use of the data.</li><li>Methods for limiting the use and disclosure of the information.</li><li>A list of the types of third parties to whom the information might be disclosed.</li><li>Contact information for inquires and complaints.</li></ul>]]></SectionText></ReportSection><ReportSection><Name>Reference Info</Name><SectionText><![CDATA[<b>California Online Privacy Protection Act</b><br /><a href="http://oag.ca.gov/privacy/COPPA">http://oag.ca.gov/privacy/COPPA</a><br /><br /><b>National Conference of State Legislation</b><br /><a href="http://www.ncsl.org/issues-research/telecom/state-laws-related-to-internet-privacy.aspx">http://www.ncsl.org/issues-research/telecom/state-laws-related-to-internet-privacy.aspx</a><br /><br /><b>Gramm-Leach-Bliley Act</b><br /><a href="http://www.gpo.gov/fdsys/pkg/PLAW-106publ102/pdf/PLAW-106publ102.pdf">http://www.gpo.gov/fdsys/pkg/PLAW-106publ102/pdf/PLAW-106publ102.pdf</a><br /><br /><b>Health Insurance Portability and Accountability Act of 1996</b><br /><a href="https://www.cms.gov/Regulations-and-Guidance/HIPAA-Administrative-Simplification/HIPAAGenInfo/downloads/HIPAALaw.pdf">https://www.cms.gov/Regulations-and-Guidance/HIPAA-Administrative-Simplification/HIPAAGenInfo/downloads/HIPAALaw.pdf</a><br /><br /><b>Health Insurance Portability and Accountability Act of 1996</b><br /><a href="http://ec.europa.eu/justice/policies/privacy/docs/guide/guide-ukingdom_en.pdf">http://ec.europa.eu/justice/policies/privacy/docs/guide/guide-ukingdom_en.pdf</a><br /><br />]]></SectionText></ReportSection><RawResponse><![CDATA[HTTP/1.1 200 OK
+Content-Type: text/html
+Last-Modified: Tue, 31 Dec 2019 15:41:10 GMT
+Accept-Ranges: bytes
+ETag: "fd1bc0b9f0bfd51:0"
+Server: Microsoft-IIS/10.0
+X-Powered-By: ASP.NET
+Date: Tue, 31 Dec 2019 15:48:20 GMT
+Content-Length: 1215
+
+<html>
+<head>
+<title>Page Two</title>
+<script>
+ function checkForm(){
+  alert('works');
+  document.getElementById("demoxss").innerHTML = document.getElementById('password').value;
+  document.getElementById("demoxss2").innerHTML = document.getElementById('username').value;
+  alert(document.getElementById('password').value);
+   alert(document.getElementById('username').value);
+  
+  return true;
+}
+ var pos=document.URL.indexOf("password=")+4;
+ document.write(document.URL.substring(pos,document.URL.length));
+</script>
+</head>
+<body>
+<h1>Page two</h1>
+<div id=demoxss2></div>
+<UL>
+<LI><a href=page1.html>Page One</a></LI>
+<LI><a href=page2.html>Page Two 222</a></LI>
+<LI><a href=page3.html>Page Three 333</a></LI>
+<LI><a href="http://zero.webappsecurity.com">External Page</a></LI>
+<form method="get" onsubmit="return checkForm(); novalidate="novalidate"">
+  Name of new user: <input id="username" type="text" name="username">
+  Password for new user: <input id="password" type="password" name="user_passwd">
+  <input type="submit" name="action" value="Create User" onsubmit="return checkForm()">
+</form>
+<script>checkForm()</script>
+<div id=demoxss></div>
+</UL>
+</body>
+</html>
+]]></RawResponse></Issue><Issue><CheckTypeID>Best Practices</CheckTypeID><EngineType>11546</EngineType><URL>http://127.0.0.1:80/page2.html</URL><Scheme>http</Scheme><Host>127.0.0.1</Host><Port>80</Port><VulnerableSession><![CDATA[GET /page2.html HTTP/1.1
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Crawl"; SID="629F6C80F8F5C1627601B861C0F1AA02"; SessionType="ExternalAddedToCrawl"; CrawlType="None"; AttackType="None"; OriginatingEngineID="00000000-0000-0000-0000-000000000000"; ThreadId="3"; ThreadType="CrawlBreadthFirstDBReader"; 
+X-RequestManager-Memo: sid="339"; smi="0"; sc="1"; ID="815e429c-341b-4765-a34c-25dcb763dbda"; 
+X-Request-Memo: ID="b6b11dd3-7419-45c5-90d8-446c35000453"; sc="1"; tid="186"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></VulnerableSession><TriggerSession null="1" /><VulnerabilityID>5597</VulnerabilityID><Severity>0</Severity><Name>Privacy Violation: Autocomplete</Name><ReportSection><Name>Summary</Name><SectionText><![CDATA[Most recent browsers have features that will save form field content entered by users and then automatically complete form entry the next time the fields are encountered. This feature is enabled by default and could leak sensitive information since it is stored on the hard drive of the user. The risk of this issue is greatly increased if users are accessing the application from a shared environment. Recommendations include setting autocomplete to "off" on all your forms.]]></SectionText></ReportSection><ReportSection><Name>Implication</Name><SectionText></SectionText></ReportSection><ReportSection><Name>Execution</Name><SectionText></SectionText></ReportSection><ReportSection><Name>Fix</Name><SectionText></SectionText></ReportSection><ReportSection><Name>Reference Info</Name><SectionText><![CDATA[<br /><b>Microsoft:</b><br /><a href="http://msdn.microsoft.com/en-us/library/ms533032(VS.85).aspx#security">Autocomplete Security</a>]]></SectionText></ReportSection><RawResponse><![CDATA[HTTP/1.1 200 OK
+Content-Type: text/html
+Last-Modified: Tue, 31 Dec 2019 15:41:10 GMT
+Accept-Ranges: bytes
+ETag: "fd1bc0b9f0bfd51:0"
+Server: Microsoft-IIS/10.0
+X-Powered-By: ASP.NET
+Date: Tue, 31 Dec 2019 15:48:20 GMT
+Content-Length: 1215
+
+<html>
+<head>
+<title>Page Two</title>
+<script>
+ function checkForm(){
+  alert('works');
+  document.getElementById("demoxss").innerHTML = document.getElementById('password').value;
+  document.getElementById("demoxss2").innerHTML = document.getElementById('username').value;
+  alert(document.getElementById('password').value);
+   alert(document.getElementById('username').value);
+  
+  return true;
+}
+ var pos=document.URL.indexOf("password=")+4;
+ document.write(document.URL.substring(pos,document.URL.length));
+</script>
+</head>
+<body>
+<h1>Page two</h1>
+<div id=demoxss2></div>
+<UL>
+<LI><a href=page1.html>Page One</a></LI>
+<LI><a href=page2.html>Page Two 222</a></LI>
+<LI><a href=page3.html>Page Three 333</a></LI>
+<LI><a href="http://zero.webappsecurity.com">External Page</a></LI>
+<form method="get" onsubmit="return checkForm(); novalidate="novalidate"">
+  Name of new user: <input id="username" type="text" name="username">
+  Password for new user: <input id="password" type="password" name="user_passwd">
+  <input type="submit" name="action" value="Create User" onsubmit="return checkForm()">
+</form>
+<script>checkForm()</script>
+<div id=demoxss></div>
+</UL>
+</body>
+</html>
+]]></RawResponse></Issue><Issue><CheckTypeID>Best Practices</CheckTypeID><EngineType>11550</EngineType><URL>http://127.0.0.1:80/page2.html</URL><Scheme>http</Scheme><Host>127.0.0.1</Host><Port>80</Port><VulnerableSession><![CDATA[GET /page2.html HTTP/1.1
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Crawl"; SID="629F6C80F8F5C1627601B861C0F1AA02"; SessionType="ExternalAddedToCrawl"; CrawlType="None"; AttackType="None"; OriginatingEngineID="00000000-0000-0000-0000-000000000000"; ThreadId="3"; ThreadType="CrawlBreadthFirstDBReader"; 
+X-RequestManager-Memo: sid="339"; smi="0"; sc="1"; ID="815e429c-341b-4765-a34c-25dcb763dbda"; 
+X-Request-Memo: ID="b6b11dd3-7419-45c5-90d8-446c35000453"; sc="1"; tid="186"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></VulnerableSession><TriggerSession null="1" /><VulnerabilityID>11359</VulnerabilityID><Severity>0</Severity><Name>Web Server Misconfiguration: Insecure Content-Type Setting</Name><ReportSection><Name>Summary</Name><SectionText><![CDATA[<br />The Content-Type HTTP response header or the HTML meta tag provides a mechanism for the server to specify an appropriate character encoding for the response content to be rendered in the web browser. Proper specification of the character encoding through the charset parameter in the Content-Type field reduces the likelihood of misinterpretation of the characters in the response content and ensure reliable rendering of the web page.
+Failure to ensure enforcement of the desired character encoding could result in client-side attacks like Cross-Site Scripting.]]></SectionText></ReportSection><ReportSection><Name>Implication</Name><SectionText><![CDATA[<br />In the absence of the character set specification, a user-agent might default to a non-standard character set, or could derive an incorrect character set based on certain characters in the response content. In some cases, both these approaches can cause the response to be incorrectly rendered. This may enable other attacks such as Cross-site Scripting.]]></SectionText></ReportSection><ReportSection><Name>Execution</Name><SectionText><![CDATA[<br />Verify the character set specification on every HTTP response. Character sets can be specified in the HTTP header or in an HTML meta tag. In the case of an XML response, the character set can be specified along with the XML Declaration.]]></SectionText></ReportSection><ReportSection><Name>Fix</Name><SectionText><![CDATA[<br />Ensure that a suitable character set is specified for every response generated by the web application. This can be done either by, 
+<ul><li>Modifying the code of the web application, which would require all pages to be modified. 
+</li><li>Adding Content-Type header to the server configuration (<b>recommended</b>). This ensures that the header is added to all the responses with minimal development effort.
+</li></ul>]]></SectionText></ReportSection><ReportSection><Name>Reference Info</Name><SectionText><![CDATA[<br /><b>DoD Application Security and Development STIG</b><br /><a href="http://iase.disa.mil/stigs/app_security/app_sec/app_sec.html">http://iase.disa.mil/stigs/app_security/app_sec/app_sec.html</a><br /><br /><b>UTF-7 encoding used to create XSS attack</b><br /><a href="http://www.securityfocus.com/archive/1/420001">http://www.securityfocus.com/archive/1/420001</a><br /><br />]]></SectionText></ReportSection><RawResponse><![CDATA[HTTP/1.1 200 OK
+Content-Type: text/html
+Last-Modified: Tue, 31 Dec 2019 15:41:10 GMT
+Accept-Ranges: bytes
+ETag: "fd1bc0b9f0bfd51:0"
+Server: Microsoft-IIS/10.0
+X-Powered-By: ASP.NET
+Date: Tue, 31 Dec 2019 15:48:20 GMT
+Content-Length: 1215
+
+<html>
+<head>
+<title>Page Two</title>
+<script>
+ function checkForm(){
+  alert('works');
+  document.getElementById("demoxss").innerHTML = document.getElementById('password').value;
+  document.getElementById("demoxss2").innerHTML = document.getElementById('username').value;
+  alert(document.getElementById('password').value);
+   alert(document.getElementById('username').value);
+  
+  return true;
+}
+ var pos=document.URL.indexOf("password=")+4;
+ document.write(document.URL.substring(pos,document.URL.length));
+</script>
+</head>
+<body>
+<h1>Page two</h1>
+<div id=demoxss2></div>
+<UL>
+<LI><a href=page1.html>Page One</a></LI>
+<LI><a href=page2.html>Page Two 222</a></LI>
+<LI><a href=page3.html>Page Three 333</a></LI>
+<LI><a href="http://zero.webappsecurity.com">External Page</a></LI>
+<form method="get" onsubmit="return checkForm(); novalidate="novalidate"">
+  Name of new user: <input id="username" type="text" name="username">
+  Password for new user: <input id="password" type="password" name="user_passwd">
+  <input type="submit" name="action" value="Create User" onsubmit="return checkForm()">
+</form>
+<script>checkForm()</script>
+<div id=demoxss></div>
+</UL>
+</body>
+</html>
+]]></RawResponse></Issue><Issue><CheckTypeID>Vulnerability</CheckTypeID><EngineType>CUSTOM</EngineType><URL>http://127.0.0.1:80/page1.html</URL><Scheme>http</Scheme><Host>127.0.0.1</Host><Port>80</Port><VulnerableSession><![CDATA[GET /page1.html HTTP/1.1
+Referer: http://127.0.0.1/page2.html
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Crawl"; SID="7FE5CCEE3F4736E63A1B9DE5B4E4851A"; PSID="629F6C80F8F5C1627601B861C0F1AA02"; SessionType="Crawl"; CrawlType="HTML"; AttackType="None"; OriginatingEngineID="00000000-0000-0000-0000-000000000000"; AttributeName="href"; Format="NonRooted"; LinkKind="HyperLink"; Locations="HtmlNode"; Source="ScriptExecution"; ThreadId="79"; ThreadType="CrawlBreadthFirstDBReader"; 
+X-RequestManager-Memo: sid="339"; smi="0"; sc="1"; ID="d6225e37-e30c-4b4c-a38d-e66040ecd30e"; 
+X-Request-Memo: ID="d5083796-62c7-43cd-98c0-566701b96931"; sc="1"; tid="175"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></VulnerableSession><TriggerSession null="1" /><VulnerabilityID>3508</VulnerabilityID><Severity>1</Severity><Name>System Information Leak: Internal IP</Name><ReportSection><Name>Summary</Name><SectionText><![CDATA[A string matching an internal/reserved IPv4 or IPv6 address range was discovered. This may disclose information about the IP addressing scheme of the internal network and can be valuable to attackers.
+Internal IPv4/IPv6 ranges are:<br />10.x.x.x<br />172.16.x.x through 172.31.x.x<br />192.168.x.x<br />fd00::x<br /> If not a part of techical documentation, recommendations include removing the string from the production server.]]></SectionText></ReportSection><ReportSection><Name>Implication</Name><SectionText></SectionText></ReportSection><ReportSection><Name>Execution</Name><SectionText></SectionText></ReportSection><ReportSection><Name>Fix</Name><SectionText><![CDATA[<br />
+This issue can appear for several reasons. The most common is that the application or webserver error message discloses the IP address. This can be solved by determining where to turn off detailed error messages in the application or webserver. Another common reason is due to a comment located in the source of the webpage. This can easily be removed from the source of the page.]]></SectionText></ReportSection><ReportSection><Name>Reference Info</Name><SectionText></SectionText></ReportSection><RawResponse><![CDATA[HTTP/1.1 200 OK
+Content-Type: text/html
+Last-Modified: Tue, 31 Dec 2019 15:45:51 GMT
+Accept-Ranges: bytes
+ETag: "5146361f1bfd51:0"
+Server: Microsoft-IIS/10.0
+X-Powered-By: ASP.NET
+Date: Tue, 31 Dec 2019 15:48:24 GMT
+Content-Length: 1226
+
+<html>
+<head>
+<title>Welcome Home</title>
+<script>
+ function checkForm(){
+  alert('works');
+  document.getElementById("demoxss").innerHTML = document.getElementById('password').value;
+  document.getElementById("demoxss2").innerHTML = document.getElementById('username').value;
+  alert(document.getElementById('password').value);
+   alert(document.getElementById('username').value);
+  
+  return true;
+}
+ var pos=document.URL.indexOf("password=")+4;
+ document.write(document.URL.substring(pos,document.URL.length));
+</script>
+</head>
+<body>
+<h1>Page one demo</h1>
+<div id=demoxss2></div>
+<UL>
+<LI><a href=page1.html>Page One</a></LI>
+<LI><a href=page2.html>Page Two 222</a></LI>
+<LI><a href=page3.html>Page Three 333</a></LI>
+<LI><a href="http://zero.webappsecurity.com">External Page</a></LI>
+<form method="get" onsubmit="return checkForm(); novalidate="novalidate"">
+  Name of new user: <input id="username" type="text" name="username">
+  Password for new user: <input id="password" type="password" name="user_passwd">
+  <input type="submit" name="action" value="Create User" onsubmit="return checkForm()">
+</form>
+<script>checkForm()</script>
+<div id=demoxss></div>
+</UL>
+
+</body>
+</html>
+]]></RawResponse></Issue><Issue><CheckTypeID>Vulnerability</CheckTypeID><EngineType>11542</EngineType><URL>http://127.0.0.1:80/page1.html</URL><Scheme>http</Scheme><Host>127.0.0.1</Host><Port>80</Port><VulnerableSession><![CDATA[GET /page1.html HTTP/1.1
+Referer: http://127.0.0.1/page2.html
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Crawl"; SID="7FE5CCEE3F4736E63A1B9DE5B4E4851A"; PSID="629F6C80F8F5C1627601B861C0F1AA02"; SessionType="Crawl"; CrawlType="HTML"; AttackType="None"; OriginatingEngineID="00000000-0000-0000-0000-000000000000"; AttributeName="href"; Format="NonRooted"; LinkKind="HyperLink"; Locations="HtmlNode"; Source="ScriptExecution"; ThreadId="79"; ThreadType="CrawlBreadthFirstDBReader"; 
+X-RequestManager-Memo: sid="339"; smi="0"; sc="1"; ID="d6225e37-e30c-4b4c-a38d-e66040ecd30e"; 
+X-Request-Memo: ID="d5083796-62c7-43cd-98c0-566701b96931"; sc="1"; tid="175"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></VulnerableSession><TriggerSession null="1" /><VulnerabilityID>4722</VulnerabilityID><Severity>3</Severity><Name>Insecure Transport</Name><ReportSection><Name>Summary</Name><SectionText><![CDATA[Any area of a web application that possibly contains sensitive information or access to privileged functionality such as remote site administration functionality should utilize SSL or another form of encryption to prevent login information from being sniffed or otherwise intercepted or stolen.   ~FullURL~ has failed this policy. Recommendations include ensuring that sensitive areas of your web application have proper encryption protocols in place to prevent login information and other data that could be helpful to an attacker from being intercepted.]]></SectionText></ReportSection><ReportSection><Name>Implication</Name><SectionText><![CDATA[<br />An attacker who exploited this design vulnerability would be able to utilize the information to escalate their method of attack,  possibly leading to impersonation of a legitimate user, the theft of proprietary data, or execution of actions not intended by the application developers.]]></SectionText></ReportSection><ReportSection><Name>Execution</Name><SectionText></SectionText></ReportSection><ReportSection><Name>Fix</Name><SectionText><![CDATA[<br /><b>For Security Operations:</b><br />Ensure that sensitive areas of your web application have proper encryption protocols in place to prevent login information and other data that could be helpful to an attacker from being intercepted.
+<br /><br /><b>For Development:</b><br />Ensure that sensitive areas of your web application have proper encryption protocols in place to prevent login information and other data that could be helpful to an attacker from being intercepted.
+<br /><br /><b>For QA:</b><br />Test the application not only from the perspective of a normal user, but also from the perspective of a malicious one.]]></SectionText></ReportSection><ReportSection><Name>Reference Info</Name><SectionText></SectionText></ReportSection><RawResponse><![CDATA[HTTP/1.1 200 OK
+Content-Type: text/html
+Last-Modified: Tue, 31 Dec 2019 15:45:51 GMT
+Accept-Ranges: bytes
+ETag: "5146361f1bfd51:0"
+Server: Microsoft-IIS/10.0
+X-Powered-By: ASP.NET
+Date: Tue, 31 Dec 2019 15:48:24 GMT
+Content-Length: 1226
+
+<html>
+<head>
+<title>Welcome Home</title>
+<script>
+ function checkForm(){
+  alert('works');
+  document.getElementById("demoxss").innerHTML = document.getElementById('password').value;
+  document.getElementById("demoxss2").innerHTML = document.getElementById('username').value;
+  alert(document.getElementById('password').value);
+   alert(document.getElementById('username').value);
+  
+  return true;
+}
+ var pos=document.URL.indexOf("password=")+4;
+ document.write(document.URL.substring(pos,document.URL.length));
+</script>
+</head>
+<body>
+<h1>Page one demo</h1>
+<div id=demoxss2></div>
+<UL>
+<LI><a href=page1.html>Page One</a></LI>
+<LI><a href=page2.html>Page Two 222</a></LI>
+<LI><a href=page3.html>Page Three 333</a></LI>
+<LI><a href="http://zero.webappsecurity.com">External Page</a></LI>
+<form method="get" onsubmit="return checkForm(); novalidate="novalidate"">
+  Name of new user: <input id="username" type="text" name="username">
+  Password for new user: <input id="password" type="password" name="user_passwd">
+  <input type="submit" name="action" value="Create User" onsubmit="return checkForm()">
+</form>
+<script>checkForm()</script>
+<div id=demoxss></div>
+</UL>
+
+</body>
+</html>
+]]></RawResponse></Issue><Issue><CheckTypeID>Best Practices</CheckTypeID><EngineType>11546</EngineType><URL>http://127.0.0.1:80/page1.html</URL><Scheme>http</Scheme><Host>127.0.0.1</Host><Port>80</Port><VulnerableSession><![CDATA[GET /page1.html HTTP/1.1
+Referer: http://127.0.0.1/page2.html
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Crawl"; SID="7FE5CCEE3F4736E63A1B9DE5B4E4851A"; PSID="629F6C80F8F5C1627601B861C0F1AA02"; SessionType="Crawl"; CrawlType="HTML"; AttackType="None"; OriginatingEngineID="00000000-0000-0000-0000-000000000000"; AttributeName="href"; Format="NonRooted"; LinkKind="HyperLink"; Locations="HtmlNode"; Source="ScriptExecution"; ThreadId="79"; ThreadType="CrawlBreadthFirstDBReader"; 
+X-RequestManager-Memo: sid="339"; smi="0"; sc="1"; ID="d6225e37-e30c-4b4c-a38d-e66040ecd30e"; 
+X-Request-Memo: ID="d5083796-62c7-43cd-98c0-566701b96931"; sc="1"; tid="175"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></VulnerableSession><TriggerSession null="1" /><VulnerabilityID>5597</VulnerabilityID><Severity>0</Severity><Name>Privacy Violation: Autocomplete</Name><ReportSection><Name>Summary</Name><SectionText><![CDATA[Most recent browsers have features that will save form field content entered by users and then automatically complete form entry the next time the fields are encountered. This feature is enabled by default and could leak sensitive information since it is stored on the hard drive of the user. The risk of this issue is greatly increased if users are accessing the application from a shared environment. Recommendations include setting autocomplete to "off" on all your forms.]]></SectionText></ReportSection><ReportSection><Name>Implication</Name><SectionText></SectionText></ReportSection><ReportSection><Name>Execution</Name><SectionText></SectionText></ReportSection><ReportSection><Name>Fix</Name><SectionText></SectionText></ReportSection><ReportSection><Name>Reference Info</Name><SectionText><![CDATA[<br /><b>Microsoft:</b><br /><a href="http://msdn.microsoft.com/en-us/library/ms533032(VS.85).aspx#security">Autocomplete Security</a>]]></SectionText></ReportSection><RawResponse><![CDATA[HTTP/1.1 200 OK
+Content-Type: text/html
+Last-Modified: Tue, 31 Dec 2019 15:45:51 GMT
+Accept-Ranges: bytes
+ETag: "5146361f1bfd51:0"
+Server: Microsoft-IIS/10.0
+X-Powered-By: ASP.NET
+Date: Tue, 31 Dec 2019 15:48:24 GMT
+Content-Length: 1226
+
+<html>
+<head>
+<title>Welcome Home</title>
+<script>
+ function checkForm(){
+  alert('works');
+  document.getElementById("demoxss").innerHTML = document.getElementById('password').value;
+  document.getElementById("demoxss2").innerHTML = document.getElementById('username').value;
+  alert(document.getElementById('password').value);
+   alert(document.getElementById('username').value);
+  
+  return true;
+}
+ var pos=document.URL.indexOf("password=")+4;
+ document.write(document.URL.substring(pos,document.URL.length));
+</script>
+</head>
+<body>
+<h1>Page one demo</h1>
+<div id=demoxss2></div>
+<UL>
+<LI><a href=page1.html>Page One</a></LI>
+<LI><a href=page2.html>Page Two 222</a></LI>
+<LI><a href=page3.html>Page Three 333</a></LI>
+<LI><a href="http://zero.webappsecurity.com">External Page</a></LI>
+<form method="get" onsubmit="return checkForm(); novalidate="novalidate"">
+  Name of new user: <input id="username" type="text" name="username">
+  Password for new user: <input id="password" type="password" name="user_passwd">
+  <input type="submit" name="action" value="Create User" onsubmit="return checkForm()">
+</form>
+<script>checkForm()</script>
+<div id=demoxss></div>
+</UL>
+
+</body>
+</html>
+]]></RawResponse></Issue><Issue><CheckTypeID>Vulnerability</CheckTypeID><EngineType>11542</EngineType><URL>http://127.0.0.1:80/page1.html</URL><Scheme>http</Scheme><Host>127.0.0.1</Host><Port>80</Port><VulnerableSession><![CDATA[GET /page1.html HTTP/1.1
+Referer: http://127.0.0.1/page2.html
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Crawl"; SID="7FE5CCEE3F4736E63A1B9DE5B4E4851A"; PSID="629F6C80F8F5C1627601B861C0F1AA02"; SessionType="Crawl"; CrawlType="HTML"; AttackType="None"; OriginatingEngineID="00000000-0000-0000-0000-000000000000"; AttributeName="href"; Format="NonRooted"; LinkKind="HyperLink"; Locations="HtmlNode"; Source="ScriptExecution"; ThreadId="79"; ThreadType="CrawlBreadthFirstDBReader"; 
+X-RequestManager-Memo: sid="339"; smi="0"; sc="1"; ID="d6225e37-e30c-4b4c-a38d-e66040ecd30e"; 
+X-Request-Memo: ID="d5083796-62c7-43cd-98c0-566701b96931"; sc="1"; tid="175"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></VulnerableSession><TriggerSession null="1" /><VulnerabilityID>10595</VulnerabilityID><Severity>3</Severity><Name>Often Misused: Login</Name><ReportSection><Name>Summary</Name><SectionText><![CDATA[An unencrypted login form has been discovered. Any area of a web application that possibly contains sensitive information or access to privileged functionality such as remote site administration functionality should utilize SSL or another form of encryption to prevent login information from being sniffed or otherwise intercepted or stolen. If the login form is being served over SSL, the page that the form is being submitted to MUST be accessed over SSL.  Every link/URL present on that page (not just the form action) needs to be served over HTTPS. This will prevent Man-in-the-Middle attacks on the login form. Recommendations include ensuring that sensitive areas of your web application have proper encryption protocols in place to prevent login information and other data that could be helpful to an attacker from being intercepted.]]></SectionText></ReportSection><ReportSection><Name>Implication</Name><SectionText><![CDATA[<br />An attacker who exploited this design vulnerability would be able to utilize the information to escalate their method of attack,  possibly leading to impersonation of a legitimate user, the theft of proprietary data, or execution of actions not intended by the application developers.]]></SectionText></ReportSection><ReportSection><Name>Execution</Name><SectionText></SectionText></ReportSection><ReportSection><Name>Fix</Name><SectionText><![CDATA[<br />Ensure that sensitive areas of your web application have proper encryption protocols in place to prevent login information and other data that could be helpful to an attacker from being intercepted.]]></SectionText></ReportSection><ReportSection><Name>Reference Info</Name><SectionText><![CDATA[<br /><b>Advisory:</b><a href="http://www.kb.cert.org/vuls/id/466433">http://www.kb.cert.org/vuls/id/466433</a><br />]]></SectionText></ReportSection><RawResponse><![CDATA[HTTP/1.1 200 OK
+Content-Type: text/html
+Last-Modified: Tue, 31 Dec 2019 15:45:51 GMT
+Accept-Ranges: bytes
+ETag: "5146361f1bfd51:0"
+Server: Microsoft-IIS/10.0
+X-Powered-By: ASP.NET
+Date: Tue, 31 Dec 2019 15:48:24 GMT
+Content-Length: 1226
+
+<html>
+<head>
+<title>Welcome Home</title>
+<script>
+ function checkForm(){
+  alert('works');
+  document.getElementById("demoxss").innerHTML = document.getElementById('password').value;
+  document.getElementById("demoxss2").innerHTML = document.getElementById('username').value;
+  alert(document.getElementById('password').value);
+   alert(document.getElementById('username').value);
+  
+  return true;
+}
+ var pos=document.URL.indexOf("password=")+4;
+ document.write(document.URL.substring(pos,document.URL.length));
+</script>
+</head>
+<body>
+<h1>Page one demo</h1>
+<div id=demoxss2></div>
+<UL>
+<LI><a href=page1.html>Page One</a></LI>
+<LI><a href=page2.html>Page Two 222</a></LI>
+<LI><a href=page3.html>Page Three 333</a></LI>
+<LI><a href="http://zero.webappsecurity.com">External Page</a></LI>
+<form method="get" onsubmit="return checkForm(); novalidate="novalidate"">
+  Name of new user: <input id="username" type="text" name="username">
+  Password for new user: <input id="password" type="password" name="user_passwd">
+  <input type="submit" name="action" value="Create User" onsubmit="return checkForm()">
+</form>
+<script>checkForm()</script>
+<div id=demoxss></div>
+</UL>
+
+</body>
+</html>
+]]></RawResponse></Issue><Issue><CheckTypeID>Vulnerability</CheckTypeID><EngineType>11548</EngineType><URL>http://127.0.0.1:80/page1.html</URL><Scheme>http</Scheme><Host>127.0.0.1</Host><Port>80</Port><AttackMethod>GET</AttackMethod><VulnerableSession><![CDATA[GET /page1.html HTTP/1.1
+Referer: http://127.0.0.1/page2.html
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Crawl"; SID="7FE5CCEE3F4736E63A1B9DE5B4E4851A"; PSID="629F6C80F8F5C1627601B861C0F1AA02"; SessionType="Crawl"; CrawlType="HTML"; AttackType="None"; OriginatingEngineID="00000000-0000-0000-0000-000000000000"; AttributeName="href"; Format="NonRooted"; LinkKind="HyperLink"; Locations="HtmlNode"; Source="ScriptExecution"; ThreadId="79"; ThreadType="CrawlBreadthFirstDBReader"; 
+X-RequestManager-Memo: sid="339"; smi="0"; sc="1"; ID="d6225e37-e30c-4b4c-a38d-e66040ecd30e"; 
+X-Request-Memo: ID="d5083796-62c7-43cd-98c0-566701b96931"; sc="1"; tid="175"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></VulnerableSession><TriggerSession null="1" /><VulnerabilityID>11293</VulnerabilityID><Severity>3</Severity><Name>Cross-Frame Scripting</Name><ReportSection><Name>Summary</Name><SectionText><![CDATA[<br />A Cross-Frame Scripting (XFS) vulnerability can allow an attacker to load the vulnerable application inside an HTML iframe tag on a malicious page. The attacker could use this weakness to devise a Clickjacking attack to conduct phishing, frame sniffing, social engineering or Cross-Site Request Forgery attacks.
+<br /><br /><b>Clickjacking</b><br />
+The goal of a Clickjacking attack is to deceive the victim (user) into interacting with UI elements of the attacker’s choice on the target web site without their knowledge and then executing privileged functionality on the victim’s behalf. To achieve this goal, the attacker must exploit the XFS vulnerability to load the attack target inside an iframe tag, hide it using Cascading Style Sheets (CSS) and overlay the phishing content on the malicious page. By placing the UI elements on the phishing page so they overlap with those on the page targeted in the attack, the attacker can ensure that the victim must interact with the UI elements on the target page not visible to the victim.<br /><br />
+WebInspect has detected a page which potentially handles sensitive information using an HTML form with a password input field and is missing XFS protection. <br /><i><drc_xfsprotection /></i>]]></SectionText></ReportSection><ReportSection><Name>Implication</Name><SectionText><![CDATA[<br />A Cross-Frame Scripting weakness could allow an attacker to embed the vulnerable application inside an iframe. Exploitation of this weakness could result in:<ol><li>Hijacking of user events such as keystrokes</li><li>Theft of sensitive information</li><li>Execution of privileged functionality through combination with Cross-Site Request Forgery attacks</li></ol>]]></SectionText></ReportSection><ReportSection><Name>Execution</Name><SectionText><![CDATA[<br />Create a test page containing an HTML <font face="courier new"> iframe </font> tag whose <font face="courier new">src</font> attribute is set to ~FullURL~. Successful framing of the target page indicates that the application is susceptibile to XFS. <br /><br />Note that WebInspect will report only one instance of this check across each host within the scope of the scan. The other visible pages on the site may, however, be vulnerable to XFS as well and therefore should be protected against it with an appropriate fix.]]></SectionText></ReportSection><ReportSection><Name>Fix</Name><SectionText><![CDATA[<br />The Content Security Policy (CSP) <font face="courier new">frame-ancestors</font> directive obsoletes the <font face="courier new">X-Frame-Options</font> header. Both provide for a policy-based mitigation technique against cross-frame scripting vulnerabilities.  The difference is that while the <font face="courier new">X-Frame-Options</font> technique only checks against the top-level document’s location, the CSP <font face="courier new">frame-ancestors</font> header checks for conformity from all ancestors. <br /><br />
+If both CSP <font face="courier new">frame-ancestors</font> and <font face="courier new">X-Frame-Options</font> headers are present and supported, the CSP directive will prevail. WebInspect recommends using both CSP <font face="courier new">frame-ancestors</font> and <font face="courier new">X-Frame-Options</font> headers as CSP is not supported by Internet Explorer and many older versions of other browsers. <br /><br />
+In addition, developers must also use client-side frame busting JavaScript as a protection against XFS. This will enable users of older browsers that do not support the <font face="courier new">X-Frame-Options</font> header to also be protected from Clickjacking attacks.<br /><br /><b>X-Frame-Options</b><br />Developers can use this header to instruct the browser about appropriate actions to perform if their site is included inside an <font face="courier new">iframe</font>.<brr />
+Developers must set the <font face="courier new">X-Frame-Options</font> header to one of the following permitted values:
+<ul><li>DENY<br />
+Deny all attempts to frame the page </li><li>SAMEORIGIN<br />
+The page can be framed by another page only if it belongs to the same origin as the page being framed</li><li>ALLOW-FROM origin<br />
+Developers can specify a list of trusted origins in the origin attribute. Only pages on origin are permitted to load this page inside an <font face="courier new">iframe</font></li></ul><br /><b>Content-Security-Policy: <font face="courier new">frame-ancestors</font></b><br />Developers can use the CSP header with the <font face="courier new">frame-ancestors</font> directive, which replaces the <font face="courier new">X-Frame-Options</font> header, to instruct the browser about appropriate actions to perform if their site is included inside an iframe. Developers can set the frame-ancestors attribute to one of the following permitted values:
+<ul><li>
+‘none’ <br />Equivalent to “DENY” - deny all attempts to frame the page</li><li>‘self’ <br />Equivalent to “SAMEORIGIN” - the page can be framed by another page only if it belongs to the same origin as the page being framed</li><li> &lt;host-source&gt;<br />Equivalent to “ALLOW-FROM” - developers can specify a list of trusted origins which maybe host name or IP address or URL scheme. Only pages on this list of trusted origin are permitted to load this page inside an iframe</li><li>&lt;scheme-source&gt;<br />Developers can also specify a schema such as http: or https: that can frame the page.</li></ul>]]></SectionText></ReportSection><ReportSection><Name>Reference Info</Name><SectionText><![CDATA[<br /><b>Frame Busting:</b><br /><a href="http://crypto.stanford.edu/~dabo/pubs/papers/framebust.pdf">Busting Frame Busting: A Study of Clickjacking Vulnerabilities on Popular Sites</a><br /><a href="https://www.owasp.org/images/0/0e/OWASP_AppSec_Research_2010_Busting_Frame_Busting_by_Rydstedt.pdf">OWASP: Busting Frame Busting</a><br /><br /><b>OWASP:</b><br /><a href="https://www.owasp.org/index.php/Clickjacking">Clickjacking</a><br /><br /><b>Content-Security-Policy (CSP)</b><br /><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/frame-ancestors#Examples">CSP: frame-ancestors</a><br /><br /><b>Specification:</b><br /><a href="https://w3c.github.io/webappsec-csp/2/">Content Security Policy Level 2</a><br /><a href="http://tools.ietf.org/html/draft-ietf-websec-x-frame-options-01">X-Frame-Options IETF Draft</a><br /><br /><b>Server Configuration:</b><br /><a href="http://support.microsoft.com/kb/2694329">IIS</a><br /><a href="https://developer.mozilla.org/en-US/docs/HTTP/X-Frame-Options">Apache, nginx</a><br /><br /><b>HP 2012 Cyber Security Report</b><br /><a href="http://www.hpenterprisesecurity.com/collateral/whitepaper/HP2012CyberRiskReport_0313.pdf">The X-Frame-Options header - a failure to launch</a>]]></SectionText></ReportSection><RawResponse><![CDATA[HTTP/1.1 200 OK
+Content-Type: text/html
+Last-Modified: Tue, 31 Dec 2019 15:45:51 GMT
+Accept-Ranges: bytes
+ETag: "5146361f1bfd51:0"
+Server: Microsoft-IIS/10.0
+X-Powered-By: ASP.NET
+Date: Tue, 31 Dec 2019 15:48:24 GMT
+Content-Length: 1226
+
+<html>
+<head>
+<title>Welcome Home</title>
+<script>
+ function checkForm(){
+  alert('works');
+  document.getElementById("demoxss").innerHTML = document.getElementById('password').value;
+  document.getElementById("demoxss2").innerHTML = document.getElementById('username').value;
+  alert(document.getElementById('password').value);
+   alert(document.getElementById('username').value);
+  
+  return true;
+}
+ var pos=document.URL.indexOf("password=")+4;
+ document.write(document.URL.substring(pos,document.URL.length));
+</script>
+</head>
+<body>
+<h1>Page one demo</h1>
+<div id=demoxss2></div>
+<UL>
+<LI><a href=page1.html>Page One</a></LI>
+<LI><a href=page2.html>Page Two 222</a></LI>
+<LI><a href=page3.html>Page Three 333</a></LI>
+<LI><a href="http://zero.webappsecurity.com">External Page</a></LI>
+<form method="get" onsubmit="return checkForm(); novalidate="novalidate"">
+  Name of new user: <input id="username" type="text" name="username">
+  Password for new user: <input id="password" type="password" name="user_passwd">
+  <input type="submit" name="action" value="Create User" onsubmit="return checkForm()">
+</form>
+<script>checkForm()</script>
+<div id=demoxss></div>
+</UL>
+
+</body>
+</html>
+]]></RawResponse></Issue><Issue><CheckTypeID>Vulnerability</CheckTypeID><EngineType>11551</EngineType><URL>http://127.0.0.1:80/page1.html</URL><Scheme>http</Scheme><Host>127.0.0.1</Host><Port>80</Port><VulnerableSession><![CDATA[GET /page1.html HTTP/1.1
+Referer: http://127.0.0.1/page2.html
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Crawl"; SID="7FE5CCEE3F4736E63A1B9DE5B4E4851A"; PSID="629F6C80F8F5C1627601B861C0F1AA02"; SessionType="Crawl"; CrawlType="HTML"; AttackType="None"; OriginatingEngineID="00000000-0000-0000-0000-000000000000"; AttributeName="href"; Format="NonRooted"; LinkKind="HyperLink"; Locations="HtmlNode"; Source="ScriptExecution"; ThreadId="79"; ThreadType="CrawlBreadthFirstDBReader"; 
+X-RequestManager-Memo: sid="339"; smi="0"; sc="1"; ID="d6225e37-e30c-4b4c-a38d-e66040ecd30e"; 
+X-Request-Memo: ID="d5083796-62c7-43cd-98c0-566701b96931"; sc="1"; tid="175"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></VulnerableSession><TriggerSession null="1" /><VulnerabilityID>11309</VulnerabilityID><Severity>1</Severity><Name>Web Server Misconfiguration: Insecure Content-Type Setting</Name><ReportSection><Name>Summary</Name><SectionText><![CDATA[Almost all browsers are designed to use a mime sniffing technique to guess the content type of the HTTP response instead of adhering to the <font face="courier new">Content-Type</font> specified by the application in specific cases or ignoring the content when no mime type is specified. Inconsistencies introduced by the mime sniffing techniques could allow attackers to conduct Cross-Site Scripting attacks or steal sensitive user data. WebInspect has determined that the application fails to instruct the browser to strictly enforce the <font face="courier-new">Content-Type</font> specification supplied in the response.<br /><br />
+Web server misconfiguration can cause an application to send HTTP responses with the missing <font face="courier new">Content-Type</font> header or specify a mime type that does not match up accurately with the response content. When a browser receives such a response, it attempts to programmatically determine the mime type based on the content returned in the response. The mime type derived by the browser, however, might not accurately match the one intended by the application developer. Such inconsistencies have historically allowed attackers to conduct Cross-Site Scripting or data theft using Cascading Style Sheets (CSS) by letting them bypass server-side filters using mime type checking and yet have the malicious payload with misleading mime type specification executed on the client-side due to the browser mime sniffing policies.<br /><br />
+Microsoft Internet Explorer (IE) introduced the <font face="courier new">X-Content-Type-Options: nosniff</font> specification that application developers can include in all responses to ensure that mime sniffing does not occur on the client-side. This protection mechanism is limited to Microsoft Internet Explorer versions 9 and above.]]></SectionText></ReportSection><ReportSection><Name>Implication</Name><SectionText><![CDATA[By failing to dictate the suitable browser interpretation of the response content, application developers can expose their users to Cross-Site Scripting or information stealing attacks.]]></SectionText></ReportSection><ReportSection><Name>Execution</Name><SectionText><![CDATA[<ul><ol>1. Build a test page that includes a reference to an external JavaScript or CSS resource</ol><ol>2. Configure the server to return the external resource with an incorrect mime type specification</ol><ol>3. Visit the test page using an old version of Microsoft’s Internet Explorer (version  IE 8) browser</ol><ol>4. Interpretation of the external content as JavaScript or CSS by the browser despite the misleading mime type specification indicates a potential for compromise.</ol></ul>]]></SectionText></ReportSection><ReportSection><Name>Fix</Name><SectionText><![CDATA[Configure the web server to always send the <font face="courier new">X-Content-Type-Options: nosniff</font> specification in the response headers. In addition, ensure that following safety precautions are also put in place: 
+<ul><ol>1. Verify that the web server configuration will send the accurate mime type information in the <font face="courier new">Content-Type</font> header of each HTTP response</ol><ol>2. Configure the server to send a default <font face="courier new">Content-Type</font> of <font face="courier new">text-plain</font> or <font face="courier-new">application/octet-stream</font> to tackle failure scenarios</ol><ol>3. Ensure that appropriate <font face="courier new"> Character Set </font> is specified in the <font face="courier new"> Content-Type </font>header</ol><ol>4. Configure the server to send <font face="courier new">Content-Disposition: attachment; filename=name; </font>for content without an explicit content type specification.</ol></ul>]]></SectionText></ReportSection><ReportSection><Name>Reference Info</Name><SectionText><![CDATA[<br /><b>Microsoft Internet Explorer: </b><br /><a href="http://msdn.microsoft.com/en-us/library/ie/gg622941(v=vs.85).aspx">MIME-Handling Change: X-Content-Type-Options: nosniff</a><br /><a href="http://blogs.msdn.com/b/ie/archive/2010/10/26/mime-handling-changes-in-internet-explorer.aspx">MIME-Handling Changes in Internet Explorer</a><br /><br /><b>OWASP: </b><br /><a href="https://www.owasp.org/index.php/OWASP_Testing_Guide_Appendix_D:_Encoded_Injection">OWASP Testing Guide Appendix D: Encoded Injection</a><br /><a href="https://www.owasp.org/index.php/List_of_useful_HTTP_headers">List of Useful HTTP Headers</a><br /><br /><b>CSS Data Theft: </b><br /><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0654">CVE-2010-0654</a>]]></SectionText></ReportSection><RawResponse><![CDATA[HTTP/1.1 200 OK
+Content-Type: text/html
+Last-Modified: Tue, 31 Dec 2019 15:45:51 GMT
+Accept-Ranges: bytes
+ETag: "5146361f1bfd51:0"
+Server: Microsoft-IIS/10.0
+X-Powered-By: ASP.NET
+Date: Tue, 31 Dec 2019 15:48:24 GMT
+Content-Length: 1226
+
+<html>
+<head>
+<title>Welcome Home</title>
+<script>
+ function checkForm(){
+  alert('works');
+  document.getElementById("demoxss").innerHTML = document.getElementById('password').value;
+  document.getElementById("demoxss2").innerHTML = document.getElementById('username').value;
+  alert(document.getElementById('password').value);
+   alert(document.getElementById('username').value);
+  
+  return true;
+}
+ var pos=document.URL.indexOf("password=")+4;
+ document.write(document.URL.substring(pos,document.URL.length));
+</script>
+</head>
+<body>
+<h1>Page one demo</h1>
+<div id=demoxss2></div>
+<UL>
+<LI><a href=page1.html>Page One</a></LI>
+<LI><a href=page2.html>Page Two 222</a></LI>
+<LI><a href=page3.html>Page Three 333</a></LI>
+<LI><a href="http://zero.webappsecurity.com">External Page</a></LI>
+<form method="get" onsubmit="return checkForm(); novalidate="novalidate"">
+  Name of new user: <input id="username" type="text" name="username">
+  Password for new user: <input id="password" type="password" name="user_passwd">
+  <input type="submit" name="action" value="Create User" onsubmit="return checkForm()">
+</form>
+<script>checkForm()</script>
+<div id=demoxss></div>
+</UL>
+
+</body>
+</html>
+]]></RawResponse></Issue><Issue><CheckTypeID>Best Practices</CheckTypeID><EngineType>11550</EngineType><URL>http://127.0.0.1:80/page1.html</URL><Scheme>http</Scheme><Host>127.0.0.1</Host><Port>80</Port><VulnerableSession><![CDATA[GET /page1.html HTTP/1.1
+Referer: http://127.0.0.1/page2.html
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Crawl"; SID="7FE5CCEE3F4736E63A1B9DE5B4E4851A"; PSID="629F6C80F8F5C1627601B861C0F1AA02"; SessionType="Crawl"; CrawlType="HTML"; AttackType="None"; OriginatingEngineID="00000000-0000-0000-0000-000000000000"; AttributeName="href"; Format="NonRooted"; LinkKind="HyperLink"; Locations="HtmlNode"; Source="ScriptExecution"; ThreadId="79"; ThreadType="CrawlBreadthFirstDBReader"; 
+X-RequestManager-Memo: sid="339"; smi="0"; sc="1"; ID="d6225e37-e30c-4b4c-a38d-e66040ecd30e"; 
+X-Request-Memo: ID="d5083796-62c7-43cd-98c0-566701b96931"; sc="1"; tid="175"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></VulnerableSession><TriggerSession null="1" /><VulnerabilityID>11359</VulnerabilityID><Severity>0</Severity><Name>Web Server Misconfiguration: Insecure Content-Type Setting</Name><ReportSection><Name>Summary</Name><SectionText><![CDATA[<br />The Content-Type HTTP response header or the HTML meta tag provides a mechanism for the server to specify an appropriate character encoding for the response content to be rendered in the web browser. Proper specification of the character encoding through the charset parameter in the Content-Type field reduces the likelihood of misinterpretation of the characters in the response content and ensure reliable rendering of the web page.
+Failure to ensure enforcement of the desired character encoding could result in client-side attacks like Cross-Site Scripting.]]></SectionText></ReportSection><ReportSection><Name>Implication</Name><SectionText><![CDATA[<br />In the absence of the character set specification, a user-agent might default to a non-standard character set, or could derive an incorrect character set based on certain characters in the response content. In some cases, both these approaches can cause the response to be incorrectly rendered. This may enable other attacks such as Cross-site Scripting.]]></SectionText></ReportSection><ReportSection><Name>Execution</Name><SectionText><![CDATA[<br />Verify the character set specification on every HTTP response. Character sets can be specified in the HTTP header or in an HTML meta tag. In the case of an XML response, the character set can be specified along with the XML Declaration.]]></SectionText></ReportSection><ReportSection><Name>Fix</Name><SectionText><![CDATA[<br />Ensure that a suitable character set is specified for every response generated by the web application. This can be done either by, 
+<ul><li>Modifying the code of the web application, which would require all pages to be modified. 
+</li><li>Adding Content-Type header to the server configuration (<b>recommended</b>). This ensures that the header is added to all the responses with minimal development effort.
+</li></ul>]]></SectionText></ReportSection><ReportSection><Name>Reference Info</Name><SectionText><![CDATA[<br /><b>DoD Application Security and Development STIG</b><br /><a href="http://iase.disa.mil/stigs/app_security/app_sec/app_sec.html">http://iase.disa.mil/stigs/app_security/app_sec/app_sec.html</a><br /><br /><b>UTF-7 encoding used to create XSS attack</b><br /><a href="http://www.securityfocus.com/archive/1/420001">http://www.securityfocus.com/archive/1/420001</a><br /><br />]]></SectionText></ReportSection><RawResponse><![CDATA[HTTP/1.1 200 OK
+Content-Type: text/html
+Last-Modified: Tue, 31 Dec 2019 15:45:51 GMT
+Accept-Ranges: bytes
+ETag: "5146361f1bfd51:0"
+Server: Microsoft-IIS/10.0
+X-Powered-By: ASP.NET
+Date: Tue, 31 Dec 2019 15:48:24 GMT
+Content-Length: 1226
+
+<html>
+<head>
+<title>Welcome Home</title>
+<script>
+ function checkForm(){
+  alert('works');
+  document.getElementById("demoxss").innerHTML = document.getElementById('password').value;
+  document.getElementById("demoxss2").innerHTML = document.getElementById('username').value;
+  alert(document.getElementById('password').value);
+   alert(document.getElementById('username').value);
+  
+  return true;
+}
+ var pos=document.URL.indexOf("password=")+4;
+ document.write(document.URL.substring(pos,document.URL.length));
+</script>
+</head>
+<body>
+<h1>Page one demo</h1>
+<div id=demoxss2></div>
+<UL>
+<LI><a href=page1.html>Page One</a></LI>
+<LI><a href=page2.html>Page Two 222</a></LI>
+<LI><a href=page3.html>Page Three 333</a></LI>
+<LI><a href="http://zero.webappsecurity.com">External Page</a></LI>
+<form method="get" onsubmit="return checkForm(); novalidate="novalidate"">
+  Name of new user: <input id="username" type="text" name="username">
+  Password for new user: <input id="password" type="password" name="user_passwd">
+  <input type="submit" name="action" value="Create User" onsubmit="return checkForm()">
+</form>
+<script>checkForm()</script>
+<div id=demoxss></div>
+</UL>
+
+</body>
+</html>
+]]></RawResponse></Issue><Issue><CheckTypeID>Vulnerability</CheckTypeID><EngineType>10028</EngineType><URL>http://127.0.0.1:80/page1.html</URL><Scheme>http</Scheme><Host>127.0.0.1</Host><Port>80</Port><VulnerableSession><![CDATA[GET /page1.html HTTP/1.1
+Referer: http://127.0.0.1/page2.html
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Crawl"; SID="7FE5CCEE3F4736E63A1B9DE5B4E4851A"; PSID="629F6C80F8F5C1627601B861C0F1AA02"; SessionType="Crawl"; CrawlType="HTML"; AttackType="None"; OriginatingEngineID="00000000-0000-0000-0000-000000000000"; AttributeName="href"; Format="NonRooted"; LinkKind="HyperLink"; Locations="HtmlNode"; Source="ScriptExecution"; ThreadId="79"; ThreadType="CrawlBreadthFirstDBReader"; 
+X-RequestManager-Memo: sid="339"; smi="0"; sc="1"; ID="d6225e37-e30c-4b4c-a38d-e66040ecd30e"; 
+X-Request-Memo: ID="d5083796-62c7-43cd-98c0-566701b96931"; sc="1"; tid="175"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></VulnerableSession><TriggerSession null="1" /><VulnerabilityID>11603</VulnerabilityID><Severity>1</Severity><Name>HTML5: Cross-Site Scripting Protection</Name><ReportSection><Name>Summary</Name><SectionText><![CDATA[X-XSS-Protection HTTP response header enables developers and security architects to manage browser protection against reflected cross-site scripting. The mechanism is also known as the XSS Auditor in Chrome and the XSS filter in Internet Explorer.  In modern browsers, the Content-Security-Policy header can provide better protection against XSS and setting X-XSS-Protection might be  redundant. However, this header can reduce the risk of reflected XSS attacks in earlier browsers that do not support CSP.<br /><br />
+This header can be set to one of three possible values: <code>0</code>, <code>1</code>, or <code>1</code>; <code>mode=block</code> . A value of <code>0 </code> disables the protection.  A value of <code>1 </code> is the default behaviour in modern browsers that enables the protection in filter or replacement mode. For example, IE replaces JavaScript keywords such as &lt;script&gt; with &lt;scr#pt&gt; to render injected string ineffective.  The value of <code>1</code>; <code>mode=block</code>  instructs browsers to block the response from rendering in the browser.  Reports of multiple exploits that leverage false positives from default behaviour that filters or replaces JavaScript injection string within the response r eturned from server. Therefore, the current recommendation is to set the header in block mode.]]></SectionText></ReportSection><ReportSection><Name>Implication</Name><SectionText><![CDATA[Attackers may leverage zero day  reflective XSS against a site. If the header is not set in block mode, an attacker can use browser-specific filter bypass bugs to succeed in launching a reflected XSS against the site.]]></SectionText></ReportSection><ReportSection><Name>Execution</Name><SectionText><![CDATA[Click the response tab for the highlighted request.  The response header X-XSS-Protection is either missing or set to <code>1</code>.<br /><br />
+By default, WebInspect flags only one instance of this vulnerability per host because it is typical to set this header at the host level in a server configuration. <br /><br />
+Perform the following steps to flag all instances of this issue:<br /><ul><li>Create a new policy with the selection of checks that you want to include in a rescan. We recommend using the Blank or Passive policy as a base. </li><br /><li>Select this check and unselect the check input,  “FlagAtHost”,from standard description  window.</li><br /><li>Save the policy.</li><br /><li>Rescan with this new custom policy.</li><br /></ul>]]></SectionText></ReportSection><ReportSection><Name>Fix</Name><SectionText><![CDATA[Add a configuration setting or a line of code that adds a response header or <meta /> tag to set X-XSS-Protection with the value ‘<code>1</code>; <code>mode=block</code>’]]></SectionText></ReportSection><ReportSection><Name>Reference Info</Name><SectionText><![CDATA[<br /><a href="https://vulncat.fortify.com/en/weakness">Fortify Taxonomy: Software Security Errors</a><br /><a href="https://www.owasp.org/index.php/OWASP_Secure_Headers_Project#X-XSS-Protection">OWASP Secure Headers Project</a><br /><a href="https://cwe.mitre.org/data/definitions/554.html">CWE ID 554</a><br /><a href="https://bugs.chromium.org/p/chromium/issues/list?can=1&amp;q=XSS+auditor">Chromium Bugs</a>]]></SectionText></ReportSection><RawResponse><![CDATA[HTTP/1.1 200 OK
+Content-Type: text/html
+Last-Modified: Tue, 31 Dec 2019 15:45:51 GMT
+Accept-Ranges: bytes
+ETag: "5146361f1bfd51:0"
+Server: Microsoft-IIS/10.0
+X-Powered-By: ASP.NET
+Date: Tue, 31 Dec 2019 15:48:24 GMT
+Content-Length: 1226
+
+<html>
+<head>
+<title>Welcome Home</title>
+<script>
+ function checkForm(){
+  alert('works');
+  document.getElementById("demoxss").innerHTML = document.getElementById('password').value;
+  document.getElementById("demoxss2").innerHTML = document.getElementById('username').value;
+  alert(document.getElementById('password').value);
+   alert(document.getElementById('username').value);
+  
+  return true;
+}
+ var pos=document.URL.indexOf("password=")+4;
+ document.write(document.URL.substring(pos,document.URL.length));
+</script>
+</head>
+<body>
+<h1>Page one demo</h1>
+<div id=demoxss2></div>
+<UL>
+<LI><a href=page1.html>Page One</a></LI>
+<LI><a href=page2.html>Page Two 222</a></LI>
+<LI><a href=page3.html>Page Three 333</a></LI>
+<LI><a href="http://zero.webappsecurity.com">External Page</a></LI>
+<form method="get" onsubmit="return checkForm(); novalidate="novalidate"">
+  Name of new user: <input id="username" type="text" name="username">
+  Password for new user: <input id="password" type="password" name="user_passwd">
+  <input type="submit" name="action" value="Create User" onsubmit="return checkForm()">
+</form>
+<script>checkForm()</script>
+<div id=demoxss></div>
+</UL>
+
+</body>
+</html>
+]]></RawResponse></Issue><Issue><CheckTypeID>Info</CheckTypeID><EngineType>11608</EngineType><URL>http://127.0.0.1:80/page1.html</URL><Scheme>http</Scheme><Host>127.0.0.1</Host><Port>80</Port><VulnerableSession><![CDATA[GET /page1.html HTTP/1.1
+Referer: http://127.0.0.1/page2.html
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Crawl"; SID="7FE5CCEE3F4736E63A1B9DE5B4E4851A"; PSID="629F6C80F8F5C1627601B861C0F1AA02"; SessionType="Crawl"; CrawlType="HTML"; AttackType="None"; OriginatingEngineID="00000000-0000-0000-0000-000000000000"; AttributeName="href"; Format="NonRooted"; LinkKind="HyperLink"; Locations="HtmlNode"; Source="ScriptExecution"; ThreadId="79"; ThreadType="CrawlBreadthFirstDBReader"; 
+X-RequestManager-Memo: sid="339"; smi="0"; sc="1"; ID="d6225e37-e30c-4b4c-a38d-e66040ecd30e"; 
+X-Request-Memo: ID="d5083796-62c7-43cd-98c0-566701b96931"; sc="1"; tid="175"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></VulnerableSession><TriggerSession null="1" /><VulnerabilityID>11606</VulnerabilityID><Severity>0</Severity><Name>HTML5: Missing Content Security Policy</Name><ReportSection><Name>Summary</Name><SectionText><![CDATA[Content Security Policy (CSP) is an HTTP response security header that developers and security architects can leverage to whitelist domains from which the site is allowed to load resources. This header provides an in-depth security protection from critical vulnerabilities such as cross-site scripting and clickjacking. Additionally, CSP restricts execution of inline JavaScript, dynamic JavaScript code evaluation from strings, and framing of the site from external domains. While CSP is not a replacement for input validation, it can help to significantly reduce the risk of XSS from unknown weaknesses. The CSP frame-ancestors directive is equivalent to X-Frame-Options and restricts the domain that are allowed to frame the site’s content.]]></SectionText></ReportSection><ReportSection><Name>Implication</Name><SectionText><![CDATA[Security  architects and developers can leverage CSP to significantly reduce the risk of XSS and clickjacking attacks. CSP headers can restrict leakage of information to external domains by restricting which domains the site is allowed to load contents from when rendered in browser .]]></SectionText></ReportSection><ReportSection><Name>Execution</Name><SectionText><![CDATA[Access link ~FullURL~ through a proxy and notice the missing CSP header in the response. By default, WebInspect flags only one instance of this vulnerability per host because it is typical to set this header at the host level in a server configuration. <br /><br />
+Perform the following steps to flag all instances of this issue:<br /><ul><li>Create a new policy with the selection of checks that you want to include in a rescan. We recommend using the Blank or Passive policy as a base. </li><li>Select this check and uncheck the “FlagAtHost” check input from standard description.</li><li>Save the policy.</li><li>Rescan with this new custom policy.</li></ul>]]></SectionText></ReportSection><ReportSection><Name>Fix</Name><SectionText><![CDATA[Define a CSP policy suitable for your site. The policy can be set either with an HTTP response header or &lt;meta /&gt; tag. <br /><br />
+For example:<br /><code>Content-Security-Policy: default-src https://example.net; child-src 'none';</code><br />
+Or<br /><code>&lt;meta http-equiv="Content-Security-Policy" content="default-src https://cdn.example.net; child-src 'none'; object-src 'none'"&gt;</code><br /><br />
+Content-Security-Policy 2 is the recommended standard. Content-Security-Policy 3 is in draft. The following is a snapshot of modern browser support for the CSP header:<br /><ul><li>Edge: Versions 15-18; supported with a nonce bug. Version 75 and later; fully supported. </li><li>Chrome: Versions 36-38; missing the plugin-types, child-src, frame-ancestors, base-uri, and form-action directives. Version 39; missing the plugin-types, child-src, base-uri, and form-action directives. Version 40 and later; fully supported. </li><li>Firefox: Versions 31-34; missing the plugin-types, child-src, frame-ancestors, base-uri, and form-action directives. Version 35; missing the plugin-types, child-src, frame-ancestors, and form-action directives. Versions 36-44; missing the plugin-types and child-src directives. Version 45 and later; missing the plugin-types directive.</li></ul>
+Furthermore, the report-uri directive can be configured to receive reports of attempts to violate the policy. These reports can be used as an early indication of security issues in the site as well as to optimize the policy.]]></SectionText></ReportSection><ReportSection><Name>Reference Info</Name><SectionText><![CDATA[<br /><a href="http://www.w3.org/TR/CSP/">Content Security Policy Level 3</a><br /><a href="https://www.owasp.org/index.php/Content_Security_Policy">OWASP Content Security Policy</a><br /><a href="https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy">MDN web docs</a><br /><a href="https://content-security-policy.com">Content Security Policy (CSP) Quick Reference Guide</a><br />]]></SectionText></ReportSection><RawResponse><![CDATA[HTTP/1.1 200 OK
+Content-Type: text/html
+Last-Modified: Tue, 31 Dec 2019 15:45:51 GMT
+Accept-Ranges: bytes
+ETag: "5146361f1bfd51:0"
+Server: Microsoft-IIS/10.0
+X-Powered-By: ASP.NET
+Date: Tue, 31 Dec 2019 15:48:24 GMT
+Content-Length: 1226
+
+<html>
+<head>
+<title>Welcome Home</title>
+<script>
+ function checkForm(){
+  alert('works');
+  document.getElementById("demoxss").innerHTML = document.getElementById('password').value;
+  document.getElementById("demoxss2").innerHTML = document.getElementById('username').value;
+  alert(document.getElementById('password').value);
+   alert(document.getElementById('username').value);
+  
+  return true;
+}
+ var pos=document.URL.indexOf("password=")+4;
+ document.write(document.URL.substring(pos,document.URL.length));
+</script>
+</head>
+<body>
+<h1>Page one demo</h1>
+<div id=demoxss2></div>
+<UL>
+<LI><a href=page1.html>Page One</a></LI>
+<LI><a href=page2.html>Page Two 222</a></LI>
+<LI><a href=page3.html>Page Three 333</a></LI>
+<LI><a href="http://zero.webappsecurity.com">External Page</a></LI>
+<form method="get" onsubmit="return checkForm(); novalidate="novalidate"">
+  Name of new user: <input id="username" type="text" name="username">
+  Password for new user: <input id="password" type="password" name="user_passwd">
+  <input type="submit" name="action" value="Create User" onsubmit="return checkForm()">
+</form>
+<script>checkForm()</script>
+<div id=demoxss></div>
+</UL>
+
+</body>
+</html>
+]]></RawResponse></Issue><Issue><CheckTypeID>Best Practices</CheckTypeID><EngineType>11550</EngineType><URL>http://127.0.0.1:80/page3.html</URL><Scheme>http</Scheme><Host>127.0.0.1</Host><Port>80</Port><VulnerableSession><![CDATA[GET /page3.html HTTP/1.1
+Referer: http://127.0.0.1/page2.html
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Crawl"; SID="662122AD49DC494B7E0B06E461FD765F"; PSID="629F6C80F8F5C1627601B861C0F1AA02"; SessionType="Crawl"; CrawlType="HTML"; AttackType="None"; OriginatingEngineID="00000000-0000-0000-0000-000000000000"; AttributeName="href"; Format="NonRooted"; LinkKind="HyperLink"; Locations="HtmlNode"; Source="ScriptExecution"; ThreadId="146"; ThreadType="CrawlBreadthFirstDBReader"; 
+X-RequestManager-Memo: sid="339"; smi="0"; sc="1"; ID="9a94f292-a0c0-40ee-a29e-32f6caa636e7"; 
+X-Request-Memo: ID="c046997a-6bda-4291-8d88-99bedc33a365"; sc="1"; tid="135"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></VulnerableSession><TriggerSession null="1" /><VulnerabilityID>11359</VulnerabilityID><Severity>0</Severity><Name>Web Server Misconfiguration: Insecure Content-Type Setting</Name><ReportSection><Name>Summary</Name><SectionText><![CDATA[<br />The Content-Type HTTP response header or the HTML meta tag provides a mechanism for the server to specify an appropriate character encoding for the response content to be rendered in the web browser. Proper specification of the character encoding through the charset parameter in the Content-Type field reduces the likelihood of misinterpretation of the characters in the response content and ensure reliable rendering of the web page.
+Failure to ensure enforcement of the desired character encoding could result in client-side attacks like Cross-Site Scripting.]]></SectionText></ReportSection><ReportSection><Name>Implication</Name><SectionText><![CDATA[<br />In the absence of the character set specification, a user-agent might default to a non-standard character set, or could derive an incorrect character set based on certain characters in the response content. In some cases, both these approaches can cause the response to be incorrectly rendered. This may enable other attacks such as Cross-site Scripting.]]></SectionText></ReportSection><ReportSection><Name>Execution</Name><SectionText><![CDATA[<br />Verify the character set specification on every HTTP response. Character sets can be specified in the HTTP header or in an HTML meta tag. In the case of an XML response, the character set can be specified along with the XML Declaration.]]></SectionText></ReportSection><ReportSection><Name>Fix</Name><SectionText><![CDATA[<br />Ensure that a suitable character set is specified for every response generated by the web application. This can be done either by, 
+<ul><li>Modifying the code of the web application, which would require all pages to be modified. 
+</li><li>Adding Content-Type header to the server configuration (<b>recommended</b>). This ensures that the header is added to all the responses with minimal development effort.
+</li></ul>]]></SectionText></ReportSection><ReportSection><Name>Reference Info</Name><SectionText><![CDATA[<br /><b>DoD Application Security and Development STIG</b><br /><a href="http://iase.disa.mil/stigs/app_security/app_sec/app_sec.html">http://iase.disa.mil/stigs/app_security/app_sec/app_sec.html</a><br /><br /><b>UTF-7 encoding used to create XSS attack</b><br /><a href="http://www.securityfocus.com/archive/1/420001">http://www.securityfocus.com/archive/1/420001</a><br /><br />]]></SectionText></ReportSection><RawResponse><![CDATA[HTTP/1.1 200 OK
+Content-Type: text/html
+Last-Modified: Mon, 16 Dec 2019 13:48:24 GMT
+Accept-Ranges: bytes
+ETag: "5a33bd7c17b4d51:0"
+Server: Microsoft-IIS/10.0
+X-Powered-By: ASP.NET
+Date: Tue, 31 Dec 2019 15:48:24 GMT
+Content-Length: 319
+
+<html>
+<head>
+<title>Page Three</title>
+
+</head>
+<body>
+<h1>Page Three</h1>
+<UL>
+<LI><a href=page1.html>Page One</a></LI>
+<LI><a href=page2.html>Page Two 222</a></LI>
+<LI><a href=page3.html>Page Three 333</a></LI>
+<LI><a href="http://zero.webappsecurity.com">External Page</a></LI>
+</UL>
+</body>
+</html>
+]]></RawResponse></Issue><Issue><CheckTypeID>Best Practices</CheckTypeID><EngineType>CUSTOM</EngineType><URL>http://127.0.0.1:80/page2.html?username=12345&amp;user_passwd=foo&amp;action=Create%20User</URL><Scheme>http</Scheme><Host>127.0.0.1</Host><Port>80</Port><VulnerableSession><![CDATA[GET /page2.html?username=12345&user_passwd=foo&action=Create%20User HTTP/1.1
+Referer: http://127.0.0.1/page2.html
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Crawl"; SID="6B850A94129F636092BD4601884A8D43"; PSID="629F6C80F8F5C1627601B861C0F1AA02"; SessionType="Crawl"; CrawlType="Form"; AttackType="None"; OriginatingEngineID="00000000-0000-0000-0000-000000000000"; Format="Qualified"; LinkKind="FormAction"; Locations="HtmlNode"; Source="StaticParser"; ThreadId="67"; ThreadType="CrawlBreadthFirstDBReader"; 
+X-RequestManager-Memo: sid="339"; smi="0"; sc="1"; ID="42689a65-9d70-4bbe-88ed-4015e8e94ef9"; 
+X-Request-Memo: ID="5f168f45-ac65-4e8c-9483-986bb0c1dc87"; sc="1"; tid="5"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></VulnerableSession><TriggerSession null="1" /><VulnerabilityID>4729</VulnerabilityID><Severity>0</Severity><Name>Privacy Violation: HTTP GET</Name><ReportSection><Name>Summary</Name><SectionText><![CDATA[An area of the web application that possibly contains sensitive information or access to privileged functionality such as remote site administration functionality utilizes query strings to pass information between pages.  Information in query strings is directly visible to the end user via the browser interface, which can cause security issues.  At a minimum, attackers can garner information from query strings that can be utilized in escalating their method of attack, such as information about the internal workings of the application or database column names. Successful exploitation of query string parameter vulnerabilities could lead to an attacker impersonating a legitimate user, obtaining proprietary data, or simply executing actions not intended by the application developers. Recommendations include performing server-side input validation to ensure data received from the client matches expectations. ]]></SectionText></ReportSection><ReportSection><Name>Implication</Name><SectionText></SectionText></ReportSection><ReportSection><Name>Execution</Name><SectionText></SectionText></ReportSection><ReportSection><Name>Fix</Name><SectionText><![CDATA[<b>
+
+For Development:</b><br /><br />
+
+ 
+
+The best way to ensure that attackers cannot manipulate query string parameters is to perform server-side input validation.  Never implicitly trust any data returned from the client.  Utilize strong data typing to ensure that numeric values are actually numeric values, for example, and that data received from a client matches what is expected. <br /><br />
+
+ 
+
+Although not a perfect solution, as there are other methods of gathering this information, you can add a layer of protection by utilizing POST statements instead of GET for HTML form information submittal.  The POST method sends form input in a data stream, not as part of the URL as with GET statements. The advantages of the POST method is that data is not visible in the browser location window and is not recorded in web server log files.  Be advised, however, that POST data can still be sniffed. 
+
+ 
+
+ 
+
+ 
+
+<b><br /><br />
+
+For Security Operations:</b><br /><br />
+
+ 
+
+Query string vulnerabilities will ultimately require a code-based solution.  The best way of preventing these issues from a Security Operations perspective is to implement a "secure coding" development policy that prohibits placing potentially sensitive information or access to functionality inside query strings. 
+
+ 
+
+<br /><br /><b>
+
+For QA:</b><br /><br />
+
+ 
+
+From a QA perspective, scrutinize any query string variables displayed in the URL for information that could be potentially utilized by an attacker. Things to look for include the following:
+
+ 
+
+<ul><li> User Identification:   Look for values that obviously represent a user, such as a social security number, a username, or something similar.  </li><li> Session Identification:   Are there values that remain constant for an entire session? Values to look for include sessionid, session, sid, and s.  </li><li> Architecture Identification:  Are file, directory, or pathnames best left hidden displayed in the query string?</li></ul>
+
+ 
+
+Ensure these values cannot be easily guessed, or adjusted to impersonate a legitimate user, access sensitive information, or utilized for other malicious activity.]]></SectionText></ReportSection><ReportSection><Name>Reference Info</Name><SectionText></SectionText></ReportSection><RawResponse><![CDATA[HTTP/1.1 200 OK
+Content-Type: text/html
+Last-Modified: Tue, 31 Dec 2019 15:41:10 GMT
+Accept-Ranges: bytes
+ETag: "fd1bc0b9f0bfd51:0"
+Server: Microsoft-IIS/10.0
+X-Powered-By: ASP.NET
+Date: Tue, 31 Dec 2019 15:48:24 GMT
+Content-Length: 1215
+
+<html>
+<head>
+<title>Page Two</title>
+<script>
+ function checkForm(){
+  alert('works');
+  document.getElementById("demoxss").innerHTML = document.getElementById('password').value;
+  document.getElementById("demoxss2").innerHTML = document.getElementById('username').value;
+  alert(document.getElementById('password').value);
+   alert(document.getElementById('username').value);
+  
+  return true;
+}
+ var pos=document.URL.indexOf("password=")+4;
+ document.write(document.URL.substring(pos,document.URL.length));
+</script>
+</head>
+<body>
+<h1>Page two</h1>
+<div id=demoxss2></div>
+<UL>
+<LI><a href=page1.html>Page One</a></LI>
+<LI><a href=page2.html>Page Two 222</a></LI>
+<LI><a href=page3.html>Page Three 333</a></LI>
+<LI><a href="http://zero.webappsecurity.com">External Page</a></LI>
+<form method="get" onsubmit="return checkForm(); novalidate="novalidate"">
+  Name of new user: <input id="username" type="text" name="username">
+  Password for new user: <input id="password" type="password" name="user_passwd">
+  <input type="submit" name="action" value="Create User" onsubmit="return checkForm()">
+</form>
+<script>checkForm()</script>
+<div id=demoxss></div>
+</UL>
+</body>
+</html>
+]]></RawResponse></Issue><Issue><CheckTypeID>Vulnerability</CheckTypeID><EngineType>11545</EngineType><URL>http://127.0.0.1:80/page2.html?username=12345&amp;user_passwd=foo&amp;action=Create%20User</URL><Scheme>http</Scheme><Host>127.0.0.1</Host><Port>80</Port><VulnerableSession><![CDATA[GET /page2.html?username=12345&user_passwd=foo&action=Create%20User HTTP/1.1
+Referer: http://127.0.0.1/page2.html
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Crawl"; SID="6B850A94129F636092BD4601884A8D43"; PSID="629F6C80F8F5C1627601B861C0F1AA02"; SessionType="Crawl"; CrawlType="Form"; AttackType="None"; OriginatingEngineID="00000000-0000-0000-0000-000000000000"; Format="Qualified"; LinkKind="FormAction"; Locations="HtmlNode"; Source="StaticParser"; ThreadId="67"; ThreadType="CrawlBreadthFirstDBReader"; 
+X-RequestManager-Memo: sid="339"; smi="0"; sc="1"; ID="42689a65-9d70-4bbe-88ed-4015e8e94ef9"; 
+X-Request-Memo: ID="5f168f45-ac65-4e8c-9483-986bb0c1dc87"; sc="1"; tid="5"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></VulnerableSession><TriggerSession null="1" /><VulnerabilityID>10167</VulnerabilityID><Severity>3</Severity><Name>Password Management: Insecure Submission</Name><ReportSection><Name>Summary</Name><SectionText><![CDATA[A password was detected either in the request query string or the Set-Cookie header.  A password is considered sensitive private information that should be protected. Exposing a password in query strings or cookies can also leave it exposed in server logs, proxy logs, and network traffic inspection tools.]]></SectionText></ReportSection><ReportSection><Name>Implication</Name><SectionText><![CDATA[Attackers can use the password to try to gain access to the system. Users often use the same username on multiple systems and attackers can take advantage of a hacked username and password pair to brute force credential detection on this site and might gain unauthorized access to the user’s account.]]></SectionText></ReportSection><ReportSection><Name>Execution</Name><SectionText><![CDATA[Inspect the highlighted string in the request of a vulnerable session and confirm that it is indeed a password in the scanned application.]]></SectionText></ReportSection><ReportSection><Name>Fix</Name><SectionText><![CDATA[Avoid leaving login information in a query string or cookie value because an attacker could see and tamper with login values. Have a developer or security administrator examine this issue. Ensure that login information is sent via POST requests and POST parameters only over an encrypted connection, and that sensitive account information is not cached.]]></SectionText></ReportSection><ReportSection><Name>Reference Info</Name><SectionText></SectionText></ReportSection><RawResponse><![CDATA[HTTP/1.1 200 OK
+Content-Type: text/html
+Last-Modified: Tue, 31 Dec 2019 15:41:10 GMT
+Accept-Ranges: bytes
+ETag: "fd1bc0b9f0bfd51:0"
+Server: Microsoft-IIS/10.0
+X-Powered-By: ASP.NET
+Date: Tue, 31 Dec 2019 15:48:24 GMT
+Content-Length: 1215
+
+<html>
+<head>
+<title>Page Two</title>
+<script>
+ function checkForm(){
+  alert('works');
+  document.getElementById("demoxss").innerHTML = document.getElementById('password').value;
+  document.getElementById("demoxss2").innerHTML = document.getElementById('username').value;
+  alert(document.getElementById('password').value);
+   alert(document.getElementById('username').value);
+  
+  return true;
+}
+ var pos=document.URL.indexOf("password=")+4;
+ document.write(document.URL.substring(pos,document.URL.length));
+</script>
+</head>
+<body>
+<h1>Page two</h1>
+<div id=demoxss2></div>
+<UL>
+<LI><a href=page1.html>Page One</a></LI>
+<LI><a href=page2.html>Page Two 222</a></LI>
+<LI><a href=page3.html>Page Three 333</a></LI>
+<LI><a href="http://zero.webappsecurity.com">External Page</a></LI>
+<form method="get" onsubmit="return checkForm(); novalidate="novalidate"">
+  Name of new user: <input id="username" type="text" name="username">
+  Password for new user: <input id="password" type="password" name="user_passwd">
+  <input type="submit" name="action" value="Create User" onsubmit="return checkForm()">
+</form>
+<script>checkForm()</script>
+<div id=demoxss></div>
+</UL>
+</body>
+</html>
+]]></RawResponse></Issue><Issue><CheckTypeID>Vulnerability</CheckTypeID><EngineType>11542</EngineType><URL>http://127.0.0.1:80/page2.html?username=12345&amp;user_passwd=foo&amp;action=Create%20User</URL><Scheme>http</Scheme><Host>127.0.0.1</Host><Port>80</Port><VulnerableSession><![CDATA[GET /page2.html?username=12345&user_passwd=foo&action=Create%20User HTTP/1.1
+Referer: http://127.0.0.1/page2.html
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Crawl"; SID="6B850A94129F636092BD4601884A8D43"; PSID="629F6C80F8F5C1627601B861C0F1AA02"; SessionType="Crawl"; CrawlType="Form"; AttackType="None"; OriginatingEngineID="00000000-0000-0000-0000-000000000000"; Format="Qualified"; LinkKind="FormAction"; Locations="HtmlNode"; Source="StaticParser"; ThreadId="67"; ThreadType="CrawlBreadthFirstDBReader"; 
+X-RequestManager-Memo: sid="339"; smi="0"; sc="1"; ID="42689a65-9d70-4bbe-88ed-4015e8e94ef9"; 
+X-Request-Memo: ID="5f168f45-ac65-4e8c-9483-986bb0c1dc87"; sc="1"; tid="5"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></VulnerableSession><TriggerSession null="1" /><VulnerabilityID>10595</VulnerabilityID><Severity>3</Severity><Name>Often Misused: Login</Name><ReportSection><Name>Summary</Name><SectionText><![CDATA[An unencrypted login form has been discovered. Any area of a web application that possibly contains sensitive information or access to privileged functionality such as remote site administration functionality should utilize SSL or another form of encryption to prevent login information from being sniffed or otherwise intercepted or stolen. If the login form is being served over SSL, the page that the form is being submitted to MUST be accessed over SSL.  Every link/URL present on that page (not just the form action) needs to be served over HTTPS. This will prevent Man-in-the-Middle attacks on the login form. Recommendations include ensuring that sensitive areas of your web application have proper encryption protocols in place to prevent login information and other data that could be helpful to an attacker from being intercepted.]]></SectionText></ReportSection><ReportSection><Name>Implication</Name><SectionText><![CDATA[<br />An attacker who exploited this design vulnerability would be able to utilize the information to escalate their method of attack,  possibly leading to impersonation of a legitimate user, the theft of proprietary data, or execution of actions not intended by the application developers.]]></SectionText></ReportSection><ReportSection><Name>Execution</Name><SectionText></SectionText></ReportSection><ReportSection><Name>Fix</Name><SectionText><![CDATA[<br />Ensure that sensitive areas of your web application have proper encryption protocols in place to prevent login information and other data that could be helpful to an attacker from being intercepted.]]></SectionText></ReportSection><ReportSection><Name>Reference Info</Name><SectionText><![CDATA[<br /><b>Advisory:</b><a href="http://www.kb.cert.org/vuls/id/466433">http://www.kb.cert.org/vuls/id/466433</a><br />]]></SectionText></ReportSection><RawResponse><![CDATA[HTTP/1.1 200 OK
+Content-Type: text/html
+Last-Modified: Tue, 31 Dec 2019 15:41:10 GMT
+Accept-Ranges: bytes
+ETag: "fd1bc0b9f0bfd51:0"
+Server: Microsoft-IIS/10.0
+X-Powered-By: ASP.NET
+Date: Tue, 31 Dec 2019 15:48:24 GMT
+Content-Length: 1215
+
+<html>
+<head>
+<title>Page Two</title>
+<script>
+ function checkForm(){
+  alert('works');
+  document.getElementById("demoxss").innerHTML = document.getElementById('password').value;
+  document.getElementById("demoxss2").innerHTML = document.getElementById('username').value;
+  alert(document.getElementById('password').value);
+   alert(document.getElementById('username').value);
+  
+  return true;
+}
+ var pos=document.URL.indexOf("password=")+4;
+ document.write(document.URL.substring(pos,document.URL.length));
+</script>
+</head>
+<body>
+<h1>Page two</h1>
+<div id=demoxss2></div>
+<UL>
+<LI><a href=page1.html>Page One</a></LI>
+<LI><a href=page2.html>Page Two 222</a></LI>
+<LI><a href=page3.html>Page Three 333</a></LI>
+<LI><a href="http://zero.webappsecurity.com">External Page</a></LI>
+<form method="get" onsubmit="return checkForm(); novalidate="novalidate"">
+  Name of new user: <input id="username" type="text" name="username">
+  Password for new user: <input id="password" type="password" name="user_passwd">
+  <input type="submit" name="action" value="Create User" onsubmit="return checkForm()">
+</form>
+<script>checkForm()</script>
+<div id=demoxss></div>
+</UL>
+</body>
+</html>
+]]></RawResponse></Issue><Issue><CheckTypeID>Vulnerability</CheckTypeID><EngineType>11545</EngineType><URL>http://127.0.0.1:80/page2.html?username=12345&amp;user_passwd=foo&amp;action=Create%20User</URL><Scheme>http</Scheme><Host>127.0.0.1</Host><Port>80</Port><VulnerableSession><![CDATA[GET /page2.html?username=12345&user_passwd=foo&action=Create%20User HTTP/1.1
+Referer: http://127.0.0.1/page2.html
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Crawl"; SID="6B850A94129F636092BD4601884A8D43"; PSID="629F6C80F8F5C1627601B861C0F1AA02"; SessionType="Crawl"; CrawlType="Form"; AttackType="None"; OriginatingEngineID="00000000-0000-0000-0000-000000000000"; Format="Qualified"; LinkKind="FormAction"; Locations="HtmlNode"; Source="StaticParser"; ThreadId="67"; ThreadType="CrawlBreadthFirstDBReader"; 
+X-RequestManager-Memo: sid="339"; smi="0"; sc="1"; ID="42689a65-9d70-4bbe-88ed-4015e8e94ef9"; 
+X-Request-Memo: ID="5f168f45-ac65-4e8c-9483-986bb0c1dc87"; sc="1"; tid="5"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></VulnerableSession><TriggerSession null="1" /><VulnerabilityID>10965</VulnerabilityID><Severity>2</Severity><Name>Privacy Violation: HTTP GET</Name><ReportSection><Name>Summary</Name><SectionText><![CDATA[A username was detected either in the request query string or the Set-Cookie header.  A username is considered sensitive private information that should be protected. Exposing a username in query strings or cookies can also leave it exposed in server logs, proxy logs, and network traffic inspection tools.]]></SectionText></ReportSection><ReportSection><Name>Implication</Name><SectionText><![CDATA[Attackers can use the username to try to gain access to the system. Users often use the same username on multiple systems and attackers can take advantage of a hacked username and password pair to brute force credential detection on this site and might gain unauthorized access to the user’s account.]]></SectionText></ReportSection><ReportSection><Name>Execution</Name><SectionText><![CDATA[Inspect the highlighted string in the request of a vulnerable session and confirm that it is indeed a username in the scanned application.]]></SectionText></ReportSection><ReportSection><Name>Fix</Name><SectionText><![CDATA[Avoid leaving login information in a query string or cookie value because an attacker could see and tamper with login values. Have a developer or security administrator examine this issue. Ensure that login information is sent via POST requests and POST parameters only over an encrypted connection, and that sensitive account information is not cached.]]></SectionText></ReportSection><ReportSection><Name>Reference Info</Name><SectionText></SectionText></ReportSection><RawResponse><![CDATA[HTTP/1.1 200 OK
+Content-Type: text/html
+Last-Modified: Tue, 31 Dec 2019 15:41:10 GMT
+Accept-Ranges: bytes
+ETag: "fd1bc0b9f0bfd51:0"
+Server: Microsoft-IIS/10.0
+X-Powered-By: ASP.NET
+Date: Tue, 31 Dec 2019 15:48:24 GMT
+Content-Length: 1215
+
+<html>
+<head>
+<title>Page Two</title>
+<script>
+ function checkForm(){
+  alert('works');
+  document.getElementById("demoxss").innerHTML = document.getElementById('password').value;
+  document.getElementById("demoxss2").innerHTML = document.getElementById('username').value;
+  alert(document.getElementById('password').value);
+   alert(document.getElementById('username').value);
+  
+  return true;
+}
+ var pos=document.URL.indexOf("password=")+4;
+ document.write(document.URL.substring(pos,document.URL.length));
+</script>
+</head>
+<body>
+<h1>Page two</h1>
+<div id=demoxss2></div>
+<UL>
+<LI><a href=page1.html>Page One</a></LI>
+<LI><a href=page2.html>Page Two 222</a></LI>
+<LI><a href=page3.html>Page Three 333</a></LI>
+<LI><a href="http://zero.webappsecurity.com">External Page</a></LI>
+<form method="get" onsubmit="return checkForm(); novalidate="novalidate"">
+  Name of new user: <input id="username" type="text" name="username">
+  Password for new user: <input id="password" type="password" name="user_passwd">
+  <input type="submit" name="action" value="Create User" onsubmit="return checkForm()">
+</form>
+<script>checkForm()</script>
+<div id=demoxss></div>
+</UL>
+</body>
+</html>
+]]></RawResponse></Issue><Issue><CheckTypeID>Info</CheckTypeID><EngineType>10028</EngineType><URL>http://127.0.0.1:80/</URL><Scheme>http</Scheme><Host>127.0.0.1</Host><Port>80</Port><AttackMethod>OPTIONS</AttackMethod><VulnerableSession><![CDATA[OPTIONS / HTTP/1.1
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Audit.Attack"; SID="F46FB53BF6A0D3ABF61FA3B57CD83126"; PSID="7FE5CCEE3F4736E63A1B9DE5B4E4851A"; SessionType="AuditAttack"; CrawlType="None"; AttackType="None"; OriginatingEngineID="65cee7d3-561f-40dc-b5eb-c0b8c2383fcb"; AttackSequence="0"; AttackParamDesc=""; AttackParamIndex="0"; AttackParamSubIndex="0"; CheckId="10282"; Engine="Request+Modify"; SmartMode="NonServerSpecificOnly"; ThreadId="264"; ThreadType="Task"; 
+X-RequestManager-Memo: sid="359"; smi="0"; sc="1"; ID="3a46551d-edb2-46c6-8fa8-0f6ff4cd18b8"; 
+X-Request-Memo: ID="8929fdf7-456d-48dd-a940-2bae6d98ef24"; sc="1"; tid="24"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></VulnerableSession><TriggerSession><![CDATA[GET /page1.html HTTP/1.1
+Referer: http://127.0.0.1/page2.html
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Crawl"; SID="7FE5CCEE3F4736E63A1B9DE5B4E4851A"; PSID="629F6C80F8F5C1627601B861C0F1AA02"; SessionType="Crawl"; CrawlType="HTML"; AttackType="None"; OriginatingEngineID="00000000-0000-0000-0000-000000000000"; AttributeName="href"; Format="NonRooted"; LinkKind="HyperLink"; Locations="HtmlNode"; Source="ScriptExecution"; ThreadId="79"; ThreadType="CrawlBreadthFirstDBReader"; 
+X-RequestManager-Memo: sid="339"; smi="0"; sc="1"; ID="d6225e37-e30c-4b4c-a38d-e66040ecd30e"; 
+X-Request-Memo: ID="d5083796-62c7-43cd-98c0-566701b96931"; sc="1"; tid="175"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></TriggerSession><VulnerabilityID>10282</VulnerabilityID><Severity>0</Severity><Name>Web Server Misconfiguration: OPTIONS HTTP Method</Name><ReportSection><Name>Summary</Name><SectionText><![CDATA[The server supports the OPTIONS HTTP method.  The OPTIONS method is used to determine what other methods the server supports for a given URI/resource.]]></SectionText></ReportSection><ReportSection><Name>Implication</Name><SectionText></SectionText></ReportSection><ReportSection><Name>Execution</Name><SectionText></SectionText></ReportSection><ReportSection><Name>Fix</Name><SectionText></SectionText></ReportSection><ReportSection><Name>Reference Info</Name><SectionText><![CDATA[<br /><b>RFC 2616 Section 9: HTTP Methods:</b><br /><a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html</a><br /><br /><br /><b>Apache:</b><br /><a href="http://httpd.apache.org/docs/2.0/mod/core.html">Apache HTTP Server Version 2.0</a><br /><a href="http://httpd.apache.org/docs/1.3/mod/core.html">Apache HTTP Server Version 1.3</a><br /><br /><b>Microsoft:</b><br /><a href="http://www.microsoft.com/technet/security/tools/urlscan.mspx">UrlScan Security Tool</a><br /><a href="http://support.microsoft.com/kb/326444">How to configure the URLScan Tool</a><br /><a href="http://www.microsoft.com/technet/prodtechnol/WindowsServer2003/Library/IIS/4c840252-fab7-427e-a197-7facb6649106.mspx?mfr=true">Setting Application Mappings in IIS 6.0</a><br />]]></SectionText></ReportSection><RawResponse><![CDATA[HTTP/1.1 200 OK
+Allow: OPTIONS, TRACE, GET, HEAD, POST
+Server: Microsoft-IIS/10.0
+Public: OPTIONS, TRACE, GET, HEAD, POST
+X-Powered-By: ASP.NET
+Date: Tue, 31 Dec 2019 15:48:39 GMT
+Content-Length: 0
+
+]]></RawResponse></Issue><Issue><CheckTypeID>Vulnerability</CheckTypeID><EngineType>5105</EngineType><URL>http://127.0.0.1:80/page2.html?username=12345&amp;user_passwd=foo&amp;action=Create%20User&lt;sCrIpT&gt;alert(48631)&lt;/sCrIpT&gt;</URL><Scheme>http</Scheme><Host>127.0.0.1</Host><Port>80</Port><AttackMethod>GET</AttackMethod><AttackParam>action</AttackParam><VulnerableSession><![CDATA[GET /page2.html?username=12345&user_passwd=foo&action=Create%20User<sCrIpT>alert(48631)</sCrIpT> HTTP/1.1
+Referer: http://127.0.0.1/page2.html
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Audit.Attack"; SID="E64C4AE088453F791A0F59C5A82D86D7"; PSID="6B850A94129F636092BD4601884A8D43"; SessionType="AuditAttack"; CrawlType="None"; AttackType="QueryParamManipulation"; OriginatingEngineID="1354e211-9d7d-4cc1-80e6-4de3fd128002"; AttackSequence="2"; AttackParamDesc="action"; AttackParamIndex="2"; AttackParamSubIndex="0"; CheckId="5105"; Engine="Cross+Site+Scripting"; SmartMode="NonServerSpecificOnly"; AttackString="Create%2520User%3csCrIpT%3ealert(48631)%3c%2fsCrIpT%3e"; AttackStringProps="Attack"; ThreadId="226"; ThreadType="AuditorStateRequestor"; 
+X-RequestManager-Memo: sid="349"; smi="0"; sc="1"; ID="929c3b2c-eae0-4c82-a397-0ea9b8a90bcb"; 
+X-Request-Memo: ID="04464e69-ae32-40e8-bae3-5c3fa675cb4c"; sc="1"; tid="226"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></VulnerableSession><TriggerSession><![CDATA[GET /page2.html?username=12345&user_passwd=foo&action=Create%20User HTTP/1.1
+Referer: http://127.0.0.1/page2.html
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Crawl"; SID="6B850A94129F636092BD4601884A8D43"; PSID="629F6C80F8F5C1627601B861C0F1AA02"; SessionType="Crawl"; CrawlType="Form"; AttackType="None"; OriginatingEngineID="00000000-0000-0000-0000-000000000000"; Format="Qualified"; LinkKind="FormAction"; Locations="HtmlNode"; Source="StaticParser"; ThreadId="67"; ThreadType="CrawlBreadthFirstDBReader"; 
+X-RequestManager-Memo: sid="339"; smi="0"; sc="1"; ID="42689a65-9d70-4bbe-88ed-4015e8e94ef9"; 
+X-Request-Memo: ID="5f168f45-ac65-4e8c-9483-986bb0c1dc87"; sc="1"; tid="5"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></TriggerSession><VulnerabilityID>5649</VulnerabilityID><Severity>4</Severity><Name>Cross-Site Scripting: Reflected</Name><ReportSection><Name>Summary</Name><SectionText><![CDATA[<drc_fortify /><hp-img src="xss.rgc" /><br /><drc_xssrf />A Cross-Site Scripting (XSS) vulnerability was detected in the web application. Cross-Site Scripting occurs when dynamically generated web pages display user input, such as login information, that is not properly validated, allowing an attacker to embed malicious scripts into the generated page and then execute the script on the machine of any user that views the site. In this instance, the web application was vulnerable to an automatic payload, meaning the user simply has to visit a page to make the malicious scripts execute. If successful, Cross-Site Scripting vulnerabilities can be exploited to manipulate or steal cookies, create requests that can be mistaken for those of a valid user, compromise confidential information, or execute malicious code on end user systems. Recommendations include implementing secure programming techniques that ensure proper filtration of user-supplied data, and encoding all user supplied data to prevent inserted scripts being sent to end users in a format that can be executed.]]></SectionText></ReportSection><ReportSection><Name>Implication</Name><SectionText><![CDATA[<br />
+Cross-Site Scripting(XSS) happens when user input from a web client is immediately included via server-side scripts in a dynamically generated web page. Reflected XSS is specifically considered critical when malicious payload can be embedded in a URL (e.g. in query strings of GET requests). An attacker can trick a victim, via phishing attack, to click on a link with vulnerable input which has been altered to include attack code and then sent to the legitimate server. The injected code is then reflected back to the user's browser which executes it. <br /><br />
+
+The implications of successful Cross-Site Scripting attacks are:
+
+<ul><li>Account hijacking -  An attacker can hijack the user's session before the session cookie expires and take actions with the privileges of the user who accessed the URL, such as issuing database queries and viewing the results. </li><li>Malicious script execution - Users can unknowingly execute JavaScript, VBScript, ActiveX, HTML, or even Flash content that has been inserted into a dynamically generated page by an attacker. 
+
+</li><li>Worm propagation - With Ajax applications, XSS can propagate somewhat like a virus. The XSS payload can autonomously inject itself into pages, and easily re-inject the same host with more XSS, all of which can be done with no hard refresh. Thus, XSS can send multiple requests using complex HTTP methods to propagate itself invisibly to the user.
+</li><li>Information theft - Via redirection and fake sites, attackers can connect users to a malicious server of the attacker's choice and capture any information entered by the user.</li><li>	Denial of Service - Often by utilizing malformed display requests on sites that contain a Cross-Site Scripting vulnerability, attackers can cause a denial of service condition to occur by causing the host site to query itself repeatedly . </li><li>Browser Redirection - On certain types of sites that use frames, a user can be made to think that he is in fact on the original site when he has been redirected to a malicious one, since the URL in the browser's address bar will remains the same. This is because the entire page isn't being redirected, just the frame in which the JavaScript is being executed is redirected. </li><li>	Manipulation of user settings - Attackers can change user settings for nefarious purposes. </li><li>Bypass Content-Security-Policy protection  -  Attackers can inject a malformed tag formation, known as dangling tag injection, which in some cases allows injected script to reuse valid nonce on the page and bypass script source restriction. Additionally dangling tag injection can be used to steal sensitive information embedded in HTML response if browser is able to make a request to the injected link. </li><li>Base tag injection: Attacker can cause relative links on a page to load from a different domain by modifying the base URL for the page via base tag injection.</li><li>Link prefetch injection: While unable to execute script, attackers can use link tag with rel=prefetch that will make browsers pre-fetch the specified link even though it is never rendered and rejected subsequently due to web application enforced cross-site policy (e.g. CSP protections).</li><li>Edge side includes (ESI) Injection - ESI  is a markup language used in various HTTP devices, such as reverse proxies and load balancers, that are positioned between client and server.  An attacker can inject ESI markup to perform critical attacks such as cross-site scripting and HTTPOnly cookie protection bypass. </li></ul>]]></SectionText></ReportSection><ReportSection><Name>Execution</Name><SectionText><![CDATA[<br />
+
+View the attack string included with the request to check what to search for in the response. For instance, if "(javascript:alert('XSS')"  is submitted as an attack (or another scripting language), it will also appear as part of the response.  This indicates that the web application is taking values from the HTTP request parameters and using them in the HTTP response without first removing potentially malicious data.
+
+
+The response can be viewed in “Web Browser” view in the Vulnerability pane to see the injected popup events in action. Events requiring user interaction (e.g. onmouseover or onclick events) can be triggered by performing the corresponding action (e.g. clicking the injected link). 
+
+
+
+Injection with numeric string in src, or href, attributes indicates that the site is vulnerable to script include or content exfiltration. These can be verified by repeating the request in a browser and intercepting originating network traffic in a web proxy.]]></SectionText></ReportSection><ReportSection><Name>Fix</Name><SectionText><![CDATA[<br /><b>For Development:</b><br /><br />
+Cross-Site Scripting attacks can be avoided by carefully validating all input, and properly encoding all output. When validating user input, 
+
+verify that it matches the strictest definition of valid input possible. For example, if a certain parameter is supposed to be a number, attempt 
+
+to convert it to a numeric data type in your programming language. <br /><br /><b>PHP:</b> intval("0".$_GET['q']);   <br /><br /><b>ASP.NET:</b> 
+
+int.TryParse(Request.QueryString["q"], out val); <br /><br />
+
+The same applies to date and time values, or anything that can be converted to a stricter type before being used. When accepting other types of 
+
+text input, make sure the value matches either a list of acceptable values (white-listing), or a strict regular expression. If at any point the 
+
+value appears invalid, do not accept it. Also, do not attempt to return the value to the user in an error message. <br /><br />
+
+Most server side scripting languages provide built in methods to convert the value of the input variable into correct, non-interpretable HTML. 
+
+These should be used to sanitize all input before it is displayed to the client. <br /><br /><b>PHP:</b>  string htmlspecialchars (string string 
+
+[, int quote_style])<br /><br /><b>ASP.NET:</b> Server.HTMLEncode (strHTML String)
+
+
+
+<br /><br />
+
+When reflecting values into JavaScript or another format, make sure to use a type of encoding that is appropriate. Encoding data for HTML is not 
+
+sufficient when it is reflected inside of a script or style sheet. For example, when reflecting data in a JavaScript string, make sure to encode 
+
+all non-alphanumeric characters using hex (\xHH) encoding.<br /><br />
+
+If you have JavaScript on your page that accesses unsafe information (like location.href) and writes it to the page (either with document.write, 
+
+or by modifying a DOM element), make sure you encode data for HTML before writing it to the page. JavaScript does not have a built-in function to 
+
+do this, but many frameworks do. If you are lacking an available function, something like the following will handle most cases:<br /><br />
+
+s = s.replace(/&amp;/g,'&amp;amp;').replace(/"/i,'&amp;quot;').replace(/&lt;/i,'&amp;lt;').replace(/&gt;/i,'&amp;gt;').replace(/'/i,'&amp;apos;')
+
+
+<br /><br />
+
+Ensure that you are always using the right approach at the right time. Validating user input should be done as soon as it is received. Encoding 
+
+data for display should be done immediately before displaying it.
+
+<b><br /><br />
+
+
+For Security Operations:</b><br /><br />
+
+Server-side encoding, where all dynamic content is first sent through an encoding function where Scripting tags will be replaced with codes in the 
+
+selected character set, can help to prevent Cross-Site Scripting attacks. <br /><br />
+
+Many web application platforms and frameworks have some built-in support for preventing Cross-Site Scripting. Make sure that any built-in 
+
+protection is enabled for your platform. In some cases, a misconfiguration could allow Cross-Site Scripting. In ASP.NET, if a page's 
+
+EnableViewStateMac property is set to False, the ASP.NET view state can be used as a vector for Cross-Site Scripting. <br /><br />
+
+An IDS or IPS can also be used to detect or filter out XSS attacks. Below are a few regular expressions that will help detect Cross-Site 
+
+Scripting. <br /><br /><b>Regex for a simple XSS attack:</b><br />
+/((\%3C)|&lt;)((\%2F)|\/)*[a-z0-9\%]+((\%3E)|&gt;)/ix <br /><br />
+
+The above regular expression would be added into a new Snort rule as follows: <br /><br />
+
+alert tcp $EXTERNAL_NET any -&gt; $HTTP_SERVERS $HTTP_PORTS (msg:"NII Cross-Site Scripting attempt"; flow:to_server,established; 
+
+pcre:"/((\%3C)|&lt;)((\%2F)|\/)*[a-z0-9\%]+((\%3E)|&gt;)/i"; classtype:Web-application-attack; sid:9000; rev:5;) <br /><br /><b>Paranoid regex for 
+
+XSS attacks:</b><br />
+/((\%3C)|&lt;)[^\n]+((\%3E)|&gt;)/I <br /><br />
+
+This signature simply looks for the opening HTML tag, and its hex equivalent, followed by one or more characters other than the new line, and then 
+
+followed by the closing tag or its hex equivalent. This may end up giving a few false positives depending upon how your web application and web 
+
+server are structured, but it is guaranteed to catch anything that even remotely resembles a Cross-Site Scripting attack.
+
+<br /><br /><b>For QA:</b><br /><br />
+
+
+Fixes for Cross-Site Scripting defects will ultimately require code based fixes. Read the the following links for more information 
+
+about manually testing your application for Cross-Site Scripting.]]></SectionText></ReportSection><ReportSection><Name>Reference Info</Name><SectionText><![CDATA[<br /><br /><b>OWASP Cross-Site Scripting Information</b><br /><a href="https://www.owasp.org/index.php/XSS">https://www.owasp.org/index.php/XSS</a><br /><br /><b>CERT</b><br /><a href="http://www.cert.org/advisories/CA-2000-02.html">http://www.cert.org/advisories/CA-2000-02.html</a><br /><br /><b>Apache</b><br /><a href="http://httpd.apache.org/info/css-security/apache_specific.html">http://httpd.apache.org/info/css-security/apache_specific.html</a><br /><br /><b>SecurityFocus.com</b><br /><a href="http://www.securityfocus.com/infocus/1768 ">http://www.securityfocus.com/infocus/1768 </a>]]></SectionText></ReportSection><HighlightSelections><Selection><Index>54</Index><Length>42</Length></Selection></HighlightSelections><RawResponse><![CDATA[HTTP/1.1 200 OK
+Content-Type: text/html
+Last-Modified: Tue, 31 Dec 2019 15:41:10 GMT
+Accept-Ranges: bytes
+ETag: "fd1bc0b9f0bfd51:0"
+Server: Microsoft-IIS/10.0
+X-Powered-By: ASP.NET
+Date: Tue, 31 Dec 2019 15:49:26 GMT
+Content-Length: 1215
+
+<html>
+<head>
+<title>Page Two</title>
+<script>
+ function checkForm(){
+  alert('works');
+  document.getElementById("demoxss").innerHTML = document.getElementById('password').value;
+  document.getElementById("demoxss2").innerHTML = document.getElementById('username').value;
+  alert(document.getElementById('password').value);
+   alert(document.getElementById('username').value);
+  
+  return true;
+}
+ var pos=document.URL.indexOf("password=")+4;
+ document.write(document.URL.substring(pos,document.URL.length));
+</script>
+</head>
+<body>
+<h1>Page two</h1>
+<div id=demoxss2></div>
+<UL>
+<LI><a href=page1.html>Page One</a></LI>
+<LI><a href=page2.html>Page Two 222</a></LI>
+<LI><a href=page3.html>Page Three 333</a></LI>
+<LI><a href="http://zero.webappsecurity.com">External Page</a></LI>
+<form method="get" onsubmit="return checkForm(); novalidate="novalidate"">
+  Name of new user: <input id="username" type="text" name="username">
+  Password for new user: <input id="password" type="password" name="user_passwd">
+  <input type="submit" name="action" value="Create User" onsubmit="return checkForm()">
+</form>
+<script>checkForm()</script>
+<div id=demoxss></div>
+</UL>
+</body>
+</html>
+]]></RawResponse></Issue><Issue><CheckTypeID>Vulnerability</CheckTypeID><EngineType>5105</EngineType><URL>http://127.0.0.1:80/page2.html?username=12345&lt;sCrIpT&gt;alert(71737)&lt;/sCrIpT&gt;&amp;user_passwd=foo&amp;action=Create%20User</URL><Scheme>http</Scheme><Host>127.0.0.1</Host><Port>80</Port><AttackMethod>GET</AttackMethod><AttackParam>username</AttackParam><VulnerableSession><![CDATA[GET /page2.html?username=12345<sCrIpT>alert(71737)</sCrIpT>&user_passwd=foo&action=Create%20User HTTP/1.1
+Referer: http://127.0.0.1/page2.html
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Audit.Attack"; SID="A169E3AE607244D123D08F7731C0D294"; PSID="6B850A94129F636092BD4601884A8D43"; SessionType="AuditAttack"; CrawlType="None"; AttackType="QueryParamManipulation"; OriginatingEngineID="1354e211-9d7d-4cc1-80e6-4de3fd128002"; AttackSequence="2"; AttackParamDesc="username"; AttackParamIndex="0"; AttackParamSubIndex="0"; CheckId="5105"; Engine="Cross+Site+Scripting"; SmartMode="NonServerSpecificOnly"; AttackString="12345%3csCrIpT%3ealert(71737)%3c%2fsCrIpT%3e"; AttackStringProps="Attack"; ThreadId="221"; ThreadType="AuditorStateRequestor"; 
+X-RequestManager-Memo: sid="351"; smi="0"; sc="1"; ID="5bd0c98e-82e2-4a6d-84cd-ddea6154a334"; 
+X-Request-Memo: ID="328a92c1-c9ef-4f31-b1e9-29c30bbf89ba"; sc="1"; tid="221"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></VulnerableSession><TriggerSession><![CDATA[GET /page2.html?username=12345&user_passwd=foo&action=Create%20User HTTP/1.1
+Referer: http://127.0.0.1/page2.html
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Crawl"; SID="6B850A94129F636092BD4601884A8D43"; PSID="629F6C80F8F5C1627601B861C0F1AA02"; SessionType="Crawl"; CrawlType="Form"; AttackType="None"; OriginatingEngineID="00000000-0000-0000-0000-000000000000"; Format="Qualified"; LinkKind="FormAction"; Locations="HtmlNode"; Source="StaticParser"; ThreadId="67"; ThreadType="CrawlBreadthFirstDBReader"; 
+X-RequestManager-Memo: sid="339"; smi="0"; sc="1"; ID="42689a65-9d70-4bbe-88ed-4015e8e94ef9"; 
+X-Request-Memo: ID="5f168f45-ac65-4e8c-9483-986bb0c1dc87"; sc="1"; tid="5"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></TriggerSession><VulnerabilityID>5649</VulnerabilityID><Severity>4</Severity><Name>Cross-Site Scripting: Reflected</Name><ReportSection><Name>Summary</Name><SectionText><![CDATA[<drc_fortify /><hp-img src="xss.rgc" /><br /><drc_xssrf />A Cross-Site Scripting (XSS) vulnerability was detected in the web application. Cross-Site Scripting occurs when dynamically generated web pages display user input, such as login information, that is not properly validated, allowing an attacker to embed malicious scripts into the generated page and then execute the script on the machine of any user that views the site. In this instance, the web application was vulnerable to an automatic payload, meaning the user simply has to visit a page to make the malicious scripts execute. If successful, Cross-Site Scripting vulnerabilities can be exploited to manipulate or steal cookies, create requests that can be mistaken for those of a valid user, compromise confidential information, or execute malicious code on end user systems. Recommendations include implementing secure programming techniques that ensure proper filtration of user-supplied data, and encoding all user supplied data to prevent inserted scripts being sent to end users in a format that can be executed.]]></SectionText></ReportSection><ReportSection><Name>Implication</Name><SectionText><![CDATA[<br />
+Cross-Site Scripting(XSS) happens when user input from a web client is immediately included via server-side scripts in a dynamically generated web page. Reflected XSS is specifically considered critical when malicious payload can be embedded in a URL (e.g. in query strings of GET requests). An attacker can trick a victim, via phishing attack, to click on a link with vulnerable input which has been altered to include attack code and then sent to the legitimate server. The injected code is then reflected back to the user's browser which executes it. <br /><br />
+
+The implications of successful Cross-Site Scripting attacks are:
+
+<ul><li>Account hijacking -  An attacker can hijack the user's session before the session cookie expires and take actions with the privileges of the user who accessed the URL, such as issuing database queries and viewing the results. </li><li>Malicious script execution - Users can unknowingly execute JavaScript, VBScript, ActiveX, HTML, or even Flash content that has been inserted into a dynamically generated page by an attacker. 
+
+</li><li>Worm propagation - With Ajax applications, XSS can propagate somewhat like a virus. The XSS payload can autonomously inject itself into pages, and easily re-inject the same host with more XSS, all of which can be done with no hard refresh. Thus, XSS can send multiple requests using complex HTTP methods to propagate itself invisibly to the user.
+</li><li>Information theft - Via redirection and fake sites, attackers can connect users to a malicious server of the attacker's choice and capture any information entered by the user.</li><li>	Denial of Service - Often by utilizing malformed display requests on sites that contain a Cross-Site Scripting vulnerability, attackers can cause a denial of service condition to occur by causing the host site to query itself repeatedly . </li><li>Browser Redirection - On certain types of sites that use frames, a user can be made to think that he is in fact on the original site when he has been redirected to a malicious one, since the URL in the browser's address bar will remains the same. This is because the entire page isn't being redirected, just the frame in which the JavaScript is being executed is redirected. </li><li>	Manipulation of user settings - Attackers can change user settings for nefarious purposes. </li><li>Bypass Content-Security-Policy protection  -  Attackers can inject a malformed tag formation, known as dangling tag injection, which in some cases allows injected script to reuse valid nonce on the page and bypass script source restriction. Additionally dangling tag injection can be used to steal sensitive information embedded in HTML response if browser is able to make a request to the injected link. </li><li>Base tag injection: Attacker can cause relative links on a page to load from a different domain by modifying the base URL for the page via base tag injection.</li><li>Link prefetch injection: While unable to execute script, attackers can use link tag with rel=prefetch that will make browsers pre-fetch the specified link even though it is never rendered and rejected subsequently due to web application enforced cross-site policy (e.g. CSP protections).</li><li>Edge side includes (ESI) Injection - ESI  is a markup language used in various HTTP devices, such as reverse proxies and load balancers, that are positioned between client and server.  An attacker can inject ESI markup to perform critical attacks such as cross-site scripting and HTTPOnly cookie protection bypass. </li></ul>]]></SectionText></ReportSection><ReportSection><Name>Execution</Name><SectionText><![CDATA[<br />
+
+View the attack string included with the request to check what to search for in the response. For instance, if "(javascript:alert('XSS')"  is submitted as an attack (or another scripting language), it will also appear as part of the response.  This indicates that the web application is taking values from the HTTP request parameters and using them in the HTTP response without first removing potentially malicious data.
+
+
+The response can be viewed in “Web Browser” view in the Vulnerability pane to see the injected popup events in action. Events requiring user interaction (e.g. onmouseover or onclick events) can be triggered by performing the corresponding action (e.g. clicking the injected link). 
+
+
+
+Injection with numeric string in src, or href, attributes indicates that the site is vulnerable to script include or content exfiltration. These can be verified by repeating the request in a browser and intercepting originating network traffic in a web proxy.]]></SectionText></ReportSection><ReportSection><Name>Fix</Name><SectionText><![CDATA[<br /><b>For Development:</b><br /><br />
+Cross-Site Scripting attacks can be avoided by carefully validating all input, and properly encoding all output. When validating user input, 
+
+verify that it matches the strictest definition of valid input possible. For example, if a certain parameter is supposed to be a number, attempt 
+
+to convert it to a numeric data type in your programming language. <br /><br /><b>PHP:</b> intval("0".$_GET['q']);   <br /><br /><b>ASP.NET:</b> 
+
+int.TryParse(Request.QueryString["q"], out val); <br /><br />
+
+The same applies to date and time values, or anything that can be converted to a stricter type before being used. When accepting other types of 
+
+text input, make sure the value matches either a list of acceptable values (white-listing), or a strict regular expression. If at any point the 
+
+value appears invalid, do not accept it. Also, do not attempt to return the value to the user in an error message. <br /><br />
+
+Most server side scripting languages provide built in methods to convert the value of the input variable into correct, non-interpretable HTML. 
+
+These should be used to sanitize all input before it is displayed to the client. <br /><br /><b>PHP:</b>  string htmlspecialchars (string string 
+
+[, int quote_style])<br /><br /><b>ASP.NET:</b> Server.HTMLEncode (strHTML String)
+
+
+
+<br /><br />
+
+When reflecting values into JavaScript or another format, make sure to use a type of encoding that is appropriate. Encoding data for HTML is not 
+
+sufficient when it is reflected inside of a script or style sheet. For example, when reflecting data in a JavaScript string, make sure to encode 
+
+all non-alphanumeric characters using hex (\xHH) encoding.<br /><br />
+
+If you have JavaScript on your page that accesses unsafe information (like location.href) and writes it to the page (either with document.write, 
+
+or by modifying a DOM element), make sure you encode data for HTML before writing it to the page. JavaScript does not have a built-in function to 
+
+do this, but many frameworks do. If you are lacking an available function, something like the following will handle most cases:<br /><br />
+
+s = s.replace(/&amp;/g,'&amp;amp;').replace(/"/i,'&amp;quot;').replace(/&lt;/i,'&amp;lt;').replace(/&gt;/i,'&amp;gt;').replace(/'/i,'&amp;apos;')
+
+
+<br /><br />
+
+Ensure that you are always using the right approach at the right time. Validating user input should be done as soon as it is received. Encoding 
+
+data for display should be done immediately before displaying it.
+
+<b><br /><br />
+
+
+For Security Operations:</b><br /><br />
+
+Server-side encoding, where all dynamic content is first sent through an encoding function where Scripting tags will be replaced with codes in the 
+
+selected character set, can help to prevent Cross-Site Scripting attacks. <br /><br />
+
+Many web application platforms and frameworks have some built-in support for preventing Cross-Site Scripting. Make sure that any built-in 
+
+protection is enabled for your platform. In some cases, a misconfiguration could allow Cross-Site Scripting. In ASP.NET, if a page's 
+
+EnableViewStateMac property is set to False, the ASP.NET view state can be used as a vector for Cross-Site Scripting. <br /><br />
+
+An IDS or IPS can also be used to detect or filter out XSS attacks. Below are a few regular expressions that will help detect Cross-Site 
+
+Scripting. <br /><br /><b>Regex for a simple XSS attack:</b><br />
+/((\%3C)|&lt;)((\%2F)|\/)*[a-z0-9\%]+((\%3E)|&gt;)/ix <br /><br />
+
+The above regular expression would be added into a new Snort rule as follows: <br /><br />
+
+alert tcp $EXTERNAL_NET any -&gt; $HTTP_SERVERS $HTTP_PORTS (msg:"NII Cross-Site Scripting attempt"; flow:to_server,established; 
+
+pcre:"/((\%3C)|&lt;)((\%2F)|\/)*[a-z0-9\%]+((\%3E)|&gt;)/i"; classtype:Web-application-attack; sid:9000; rev:5;) <br /><br /><b>Paranoid regex for 
+
+XSS attacks:</b><br />
+/((\%3C)|&lt;)[^\n]+((\%3E)|&gt;)/I <br /><br />
+
+This signature simply looks for the opening HTML tag, and its hex equivalent, followed by one or more characters other than the new line, and then 
+
+followed by the closing tag or its hex equivalent. This may end up giving a few false positives depending upon how your web application and web 
+
+server are structured, but it is guaranteed to catch anything that even remotely resembles a Cross-Site Scripting attack.
+
+<br /><br /><b>For QA:</b><br /><br />
+
+
+Fixes for Cross-Site Scripting defects will ultimately require code based fixes. Read the the following links for more information 
+
+about manually testing your application for Cross-Site Scripting.]]></SectionText></ReportSection><ReportSection><Name>Reference Info</Name><SectionText><![CDATA[<br /><br /><b>OWASP Cross-Site Scripting Information</b><br /><a href="https://www.owasp.org/index.php/XSS">https://www.owasp.org/index.php/XSS</a><br /><br /><b>CERT</b><br /><a href="http://www.cert.org/advisories/CA-2000-02.html">http://www.cert.org/advisories/CA-2000-02.html</a><br /><br /><b>Apache</b><br /><a href="http://httpd.apache.org/info/css-security/apache_specific.html">http://httpd.apache.org/info/css-security/apache_specific.html</a><br /><br /><b>SecurityFocus.com</b><br /><a href="http://www.securityfocus.com/infocus/1768 ">http://www.securityfocus.com/infocus/1768 </a>]]></SectionText></ReportSection><HighlightSelections><Selection><Index>25</Index><Length>34</Length></Selection></HighlightSelections><RawResponse><![CDATA[HTTP/1.1 200 OK
+Content-Type: text/html
+Last-Modified: Tue, 31 Dec 2019 15:41:10 GMT
+Accept-Ranges: bytes
+ETag: "fd1bc0b9f0bfd51:0"
+Server: Microsoft-IIS/10.0
+X-Powered-By: ASP.NET
+Date: Tue, 31 Dec 2019 15:49:26 GMT
+Content-Length: 1215
+
+<html>
+<head>
+<title>Page Two</title>
+<script>
+ function checkForm(){
+  alert('works');
+  document.getElementById("demoxss").innerHTML = document.getElementById('password').value;
+  document.getElementById("demoxss2").innerHTML = document.getElementById('username').value;
+  alert(document.getElementById('password').value);
+   alert(document.getElementById('username').value);
+  
+  return true;
+}
+ var pos=document.URL.indexOf("password=")+4;
+ document.write(document.URL.substring(pos,document.URL.length));
+</script>
+</head>
+<body>
+<h1>Page two</h1>
+<div id=demoxss2></div>
+<UL>
+<LI><a href=page1.html>Page One</a></LI>
+<LI><a href=page2.html>Page Two 222</a></LI>
+<LI><a href=page3.html>Page Three 333</a></LI>
+<LI><a href="http://zero.webappsecurity.com">External Page</a></LI>
+<form method="get" onsubmit="return checkForm(); novalidate="novalidate"">
+  Name of new user: <input id="username" type="text" name="username">
+  Password for new user: <input id="password" type="password" name="user_passwd">
+  <input type="submit" name="action" value="Create User" onsubmit="return checkForm()">
+</form>
+<script>checkForm()</script>
+<div id=demoxss></div>
+</UL>
+</body>
+</html>
+]]></RawResponse></Issue><Issue><CheckTypeID>Vulnerability</CheckTypeID><EngineType>5105</EngineType><URL>http://127.0.0.1:80/page2.html?username=12345&amp;user_passwd=foo&lt;sCrIpT&gt;alert(71737)&lt;/sCrIpT&gt;&amp;action=Create%20User</URL><Scheme>http</Scheme><Host>127.0.0.1</Host><Port>80</Port><AttackMethod>GET</AttackMethod><AttackParam>user_passwd</AttackParam><VulnerableSession><![CDATA[GET /page2.html?username=12345&user_passwd=foo<sCrIpT>alert(71737)</sCrIpT>&action=Create%20User HTTP/1.1
+Referer: http://127.0.0.1/page2.html
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Audit.Attack"; SID="A70A8FE2E07933EC89470FFFA95C851D"; PSID="6B850A94129F636092BD4601884A8D43"; SessionType="AuditAttack"; CrawlType="None"; AttackType="QueryParamManipulation"; OriginatingEngineID="1354e211-9d7d-4cc1-80e6-4de3fd128002"; AttackSequence="2"; AttackParamDesc="user_passwd"; AttackParamIndex="1"; AttackParamSubIndex="0"; CheckId="5105"; Engine="Cross+Site+Scripting"; SmartMode="NonServerSpecificOnly"; AttackString="foo%3csCrIpT%3ealert(71737)%3c%2fsCrIpT%3e"; AttackStringProps="Attack"; ThreadId="82"; ThreadType="AuditorStateRequestor"; 
+X-RequestManager-Memo: sid="353"; smi="0"; sc="1"; ID="c6a5ee81-3904-4049-98a0-9e439f88c519"; 
+X-Request-Memo: ID="54784425-2821-4b01-8963-a3bc1f85c077"; sc="1"; tid="82"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></VulnerableSession><TriggerSession><![CDATA[GET /page2.html?username=12345&user_passwd=foo&action=Create%20User HTTP/1.1
+Referer: http://127.0.0.1/page2.html
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Crawl"; SID="6B850A94129F636092BD4601884A8D43"; PSID="629F6C80F8F5C1627601B861C0F1AA02"; SessionType="Crawl"; CrawlType="Form"; AttackType="None"; OriginatingEngineID="00000000-0000-0000-0000-000000000000"; Format="Qualified"; LinkKind="FormAction"; Locations="HtmlNode"; Source="StaticParser"; ThreadId="67"; ThreadType="CrawlBreadthFirstDBReader"; 
+X-RequestManager-Memo: sid="339"; smi="0"; sc="1"; ID="42689a65-9d70-4bbe-88ed-4015e8e94ef9"; 
+X-Request-Memo: ID="5f168f45-ac65-4e8c-9483-986bb0c1dc87"; sc="1"; tid="5"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></TriggerSession><VulnerabilityID>5649</VulnerabilityID><Severity>4</Severity><Name>Cross-Site Scripting: Reflected</Name><ReportSection><Name>Summary</Name><SectionText><![CDATA[<drc_fortify /><hp-img src="xss.rgc" /><br /><drc_xssrf />A Cross-Site Scripting (XSS) vulnerability was detected in the web application. Cross-Site Scripting occurs when dynamically generated web pages display user input, such as login information, that is not properly validated, allowing an attacker to embed malicious scripts into the generated page and then execute the script on the machine of any user that views the site. In this instance, the web application was vulnerable to an automatic payload, meaning the user simply has to visit a page to make the malicious scripts execute. If successful, Cross-Site Scripting vulnerabilities can be exploited to manipulate or steal cookies, create requests that can be mistaken for those of a valid user, compromise confidential information, or execute malicious code on end user systems. Recommendations include implementing secure programming techniques that ensure proper filtration of user-supplied data, and encoding all user supplied data to prevent inserted scripts being sent to end users in a format that can be executed.]]></SectionText></ReportSection><ReportSection><Name>Implication</Name><SectionText><![CDATA[<br />
+Cross-Site Scripting(XSS) happens when user input from a web client is immediately included via server-side scripts in a dynamically generated web page. Reflected XSS is specifically considered critical when malicious payload can be embedded in a URL (e.g. in query strings of GET requests). An attacker can trick a victim, via phishing attack, to click on a link with vulnerable input which has been altered to include attack code and then sent to the legitimate server. The injected code is then reflected back to the user's browser which executes it. <br /><br />
+
+The implications of successful Cross-Site Scripting attacks are:
+
+<ul><li>Account hijacking -  An attacker can hijack the user's session before the session cookie expires and take actions with the privileges of the user who accessed the URL, such as issuing database queries and viewing the results. </li><li>Malicious script execution - Users can unknowingly execute JavaScript, VBScript, ActiveX, HTML, or even Flash content that has been inserted into a dynamically generated page by an attacker. 
+
+</li><li>Worm propagation - With Ajax applications, XSS can propagate somewhat like a virus. The XSS payload can autonomously inject itself into pages, and easily re-inject the same host with more XSS, all of which can be done with no hard refresh. Thus, XSS can send multiple requests using complex HTTP methods to propagate itself invisibly to the user.
+</li><li>Information theft - Via redirection and fake sites, attackers can connect users to a malicious server of the attacker's choice and capture any information entered by the user.</li><li>	Denial of Service - Often by utilizing malformed display requests on sites that contain a Cross-Site Scripting vulnerability, attackers can cause a denial of service condition to occur by causing the host site to query itself repeatedly . </li><li>Browser Redirection - On certain types of sites that use frames, a user can be made to think that he is in fact on the original site when he has been redirected to a malicious one, since the URL in the browser's address bar will remains the same. This is because the entire page isn't being redirected, just the frame in which the JavaScript is being executed is redirected. </li><li>	Manipulation of user settings - Attackers can change user settings for nefarious purposes. </li><li>Bypass Content-Security-Policy protection  -  Attackers can inject a malformed tag formation, known as dangling tag injection, which in some cases allows injected script to reuse valid nonce on the page and bypass script source restriction. Additionally dangling tag injection can be used to steal sensitive information embedded in HTML response if browser is able to make a request to the injected link. </li><li>Base tag injection: Attacker can cause relative links on a page to load from a different domain by modifying the base URL for the page via base tag injection.</li><li>Link prefetch injection: While unable to execute script, attackers can use link tag with rel=prefetch that will make browsers pre-fetch the specified link even though it is never rendered and rejected subsequently due to web application enforced cross-site policy (e.g. CSP protections).</li><li>Edge side includes (ESI) Injection - ESI  is a markup language used in various HTTP devices, such as reverse proxies and load balancers, that are positioned between client and server.  An attacker can inject ESI markup to perform critical attacks such as cross-site scripting and HTTPOnly cookie protection bypass. </li></ul>]]></SectionText></ReportSection><ReportSection><Name>Execution</Name><SectionText><![CDATA[<br />
+
+View the attack string included with the request to check what to search for in the response. For instance, if "(javascript:alert('XSS')"  is submitted as an attack (or another scripting language), it will also appear as part of the response.  This indicates that the web application is taking values from the HTTP request parameters and using them in the HTTP response without first removing potentially malicious data.
+
+
+The response can be viewed in “Web Browser” view in the Vulnerability pane to see the injected popup events in action. Events requiring user interaction (e.g. onmouseover or onclick events) can be triggered by performing the corresponding action (e.g. clicking the injected link). 
+
+
+
+Injection with numeric string in src, or href, attributes indicates that the site is vulnerable to script include or content exfiltration. These can be verified by repeating the request in a browser and intercepting originating network traffic in a web proxy.]]></SectionText></ReportSection><ReportSection><Name>Fix</Name><SectionText><![CDATA[<br /><b>For Development:</b><br /><br />
+Cross-Site Scripting attacks can be avoided by carefully validating all input, and properly encoding all output. When validating user input, 
+
+verify that it matches the strictest definition of valid input possible. For example, if a certain parameter is supposed to be a number, attempt 
+
+to convert it to a numeric data type in your programming language. <br /><br /><b>PHP:</b> intval("0".$_GET['q']);   <br /><br /><b>ASP.NET:</b> 
+
+int.TryParse(Request.QueryString["q"], out val); <br /><br />
+
+The same applies to date and time values, or anything that can be converted to a stricter type before being used. When accepting other types of 
+
+text input, make sure the value matches either a list of acceptable values (white-listing), or a strict regular expression. If at any point the 
+
+value appears invalid, do not accept it. Also, do not attempt to return the value to the user in an error message. <br /><br />
+
+Most server side scripting languages provide built in methods to convert the value of the input variable into correct, non-interpretable HTML. 
+
+These should be used to sanitize all input before it is displayed to the client. <br /><br /><b>PHP:</b>  string htmlspecialchars (string string 
+
+[, int quote_style])<br /><br /><b>ASP.NET:</b> Server.HTMLEncode (strHTML String)
+
+
+
+<br /><br />
+
+When reflecting values into JavaScript or another format, make sure to use a type of encoding that is appropriate. Encoding data for HTML is not 
+
+sufficient when it is reflected inside of a script or style sheet. For example, when reflecting data in a JavaScript string, make sure to encode 
+
+all non-alphanumeric characters using hex (\xHH) encoding.<br /><br />
+
+If you have JavaScript on your page that accesses unsafe information (like location.href) and writes it to the page (either with document.write, 
+
+or by modifying a DOM element), make sure you encode data for HTML before writing it to the page. JavaScript does not have a built-in function to 
+
+do this, but many frameworks do. If you are lacking an available function, something like the following will handle most cases:<br /><br />
+
+s = s.replace(/&amp;/g,'&amp;amp;').replace(/"/i,'&amp;quot;').replace(/&lt;/i,'&amp;lt;').replace(/&gt;/i,'&amp;gt;').replace(/'/i,'&amp;apos;')
+
+
+<br /><br />
+
+Ensure that you are always using the right approach at the right time. Validating user input should be done as soon as it is received. Encoding 
+
+data for display should be done immediately before displaying it.
+
+<b><br /><br />
+
+
+For Security Operations:</b><br /><br />
+
+Server-side encoding, where all dynamic content is first sent through an encoding function where Scripting tags will be replaced with codes in the 
+
+selected character set, can help to prevent Cross-Site Scripting attacks. <br /><br />
+
+Many web application platforms and frameworks have some built-in support for preventing Cross-Site Scripting. Make sure that any built-in 
+
+protection is enabled for your platform. In some cases, a misconfiguration could allow Cross-Site Scripting. In ASP.NET, if a page's 
+
+EnableViewStateMac property is set to False, the ASP.NET view state can be used as a vector for Cross-Site Scripting. <br /><br />
+
+An IDS or IPS can also be used to detect or filter out XSS attacks. Below are a few regular expressions that will help detect Cross-Site 
+
+Scripting. <br /><br /><b>Regex for a simple XSS attack:</b><br />
+/((\%3C)|&lt;)((\%2F)|\/)*[a-z0-9\%]+((\%3E)|&gt;)/ix <br /><br />
+
+The above regular expression would be added into a new Snort rule as follows: <br /><br />
+
+alert tcp $EXTERNAL_NET any -&gt; $HTTP_SERVERS $HTTP_PORTS (msg:"NII Cross-Site Scripting attempt"; flow:to_server,established; 
+
+pcre:"/((\%3C)|&lt;)((\%2F)|\/)*[a-z0-9\%]+((\%3E)|&gt;)/i"; classtype:Web-application-attack; sid:9000; rev:5;) <br /><br /><b>Paranoid regex for 
+
+XSS attacks:</b><br />
+/((\%3C)|&lt;)[^\n]+((\%3E)|&gt;)/I <br /><br />
+
+This signature simply looks for the opening HTML tag, and its hex equivalent, followed by one or more characters other than the new line, and then 
+
+followed by the closing tag or its hex equivalent. This may end up giving a few false positives depending upon how your web application and web 
+
+server are structured, but it is guaranteed to catch anything that even remotely resembles a Cross-Site Scripting attack.
+
+<br /><br /><b>For QA:</b><br /><br />
+
+
+Fixes for Cross-Site Scripting defects will ultimately require code based fixes. Read the the following links for more information 
+
+about manually testing your application for Cross-Site Scripting.]]></SectionText></ReportSection><ReportSection><Name>Reference Info</Name><SectionText><![CDATA[<br /><br /><b>OWASP Cross-Site Scripting Information</b><br /><a href="https://www.owasp.org/index.php/XSS">https://www.owasp.org/index.php/XSS</a><br /><br /><b>CERT</b><br /><a href="http://www.cert.org/advisories/CA-2000-02.html">http://www.cert.org/advisories/CA-2000-02.html</a><br /><br /><b>Apache</b><br /><a href="http://httpd.apache.org/info/css-security/apache_specific.html">http://httpd.apache.org/info/css-security/apache_specific.html</a><br /><br /><b>SecurityFocus.com</b><br /><a href="http://www.securityfocus.com/infocus/1768 ">http://www.securityfocus.com/infocus/1768 </a>]]></SectionText></ReportSection><HighlightSelections><Selection><Index>43</Index><Length>32</Length></Selection></HighlightSelections><RawResponse><![CDATA[HTTP/1.1 200 OK
+Content-Type: text/html
+Last-Modified: Tue, 31 Dec 2019 15:41:10 GMT
+Accept-Ranges: bytes
+ETag: "fd1bc0b9f0bfd51:0"
+Server: Microsoft-IIS/10.0
+X-Powered-By: ASP.NET
+Date: Tue, 31 Dec 2019 15:49:26 GMT
+Content-Length: 1215
+
+<html>
+<head>
+<title>Page Two</title>
+<script>
+ function checkForm(){
+  alert('works');
+  document.getElementById("demoxss").innerHTML = document.getElementById('password').value;
+  document.getElementById("demoxss2").innerHTML = document.getElementById('username').value;
+  alert(document.getElementById('password').value);
+   alert(document.getElementById('username').value);
+  
+  return true;
+}
+ var pos=document.URL.indexOf("password=")+4;
+ document.write(document.URL.substring(pos,document.URL.length));
+</script>
+</head>
+<body>
+<h1>Page two</h1>
+<div id=demoxss2></div>
+<UL>
+<LI><a href=page1.html>Page One</a></LI>
+<LI><a href=page2.html>Page Two 222</a></LI>
+<LI><a href=page3.html>Page Three 333</a></LI>
+<LI><a href="http://zero.webappsecurity.com">External Page</a></LI>
+<form method="get" onsubmit="return checkForm(); novalidate="novalidate"">
+  Name of new user: <input id="username" type="text" name="username">
+  Password for new user: <input id="password" type="password" name="user_passwd">
+  <input type="submit" name="action" value="Create User" onsubmit="return checkForm()">
+</form>
+<script>checkForm()</script>
+<div id=demoxss></div>
+</UL>
+</body>
+</html>
+]]></RawResponse></Issue><Issue><CheckTypeID>Vulnerability</CheckTypeID><EngineType>10</EngineType><URL>http://127.0.0.1:80/aspnet_client/</URL><Scheme>http</Scheme><Host>127.0.0.1</Host><Port>80</Port><AttackMethod>GET</AttackMethod><VulnerableSession><![CDATA[GET /aspnet_client/ HTTP/1.1
+Referer: http://127.0.0.1/
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Audit.Attack"; SID="EA3D9EE72642C0AB2B45EDB24B0D6576"; PSID="08571E6634B4C60A94919DDC278B4A73"; SessionType="AuditAttack"; CrawlType="None"; AttackType="Search"; OriginatingEngineID="ae34b422-6357-4aca-8fe7-7e449e14c9b7"; AttackSequence="0"; AttackParamDesc=""; AttackParamIndex="0"; AttackParamSubIndex="0"; CheckId="10224"; Engine="Directory+Enumeration"; SmartMode="ServerSpecificOnly"; ThreadId="168"; ThreadType="Task"; 
+X-RequestManager-Memo: sid="355"; smi="0"; sc="1"; ID="92e51247-5e41-4ca7-9756-613f2098e884"; 
+X-Request-Memo: ID="b677ed2c-8681-46d3-bc19-2bdc298fd4e8"; sc="1"; tid="172"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></VulnerableSession><TriggerSession><![CDATA[GET / HTTP/1.1
+Referer: http://127.0.0.1/page1.html
+Accept: */*
+Pragma: no-cache
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:30.0) Gecko/20100101 Firefox/30.0
+Host: 127.0.0.1
+Connection: Keep-Alive
+X-WIPP: AscVersion=19.2.0.184
+X-Scan-Memo: Category="Audit.Attack"; SID="08571E6634B4C60A94919DDC278B4A73"; PSID="7FE5CCEE3F4736E63A1B9DE5B4E4851A"; SessionType="PathTruncation"; CrawlType="None"; AttackType="None"; OriginatingEngineID="398bfe9e-1b77-4458-9691-603eea06e341"; AttackSequence="0"; AttackParamDesc=""; AttackParamIndex="0"; AttackParamSubIndex="0"; CheckId="0"; Engine="Path+Truncation"; SmartMode="NonServerSpecificOnly"; ThreadId="264"; ThreadType="Task"; 
+X-RequestManager-Memo: sid="343"; smi="0"; sc="1"; ID="d962a7d4-847b-46d1-aa0f-493acdd7a1e2"; 
+X-Request-Memo: ID="11ecc1ca-f7f2-4b4b-a33d-95970c2f80de"; sc="1"; tid="141"; 
+Cookie: CustomCookie=WebInspect153858ZX3D0E5DF3FF474237BF0CE1ED61A9A536Y351B
+
+]]></TriggerSession><VulnerabilityID>10224</VulnerabilityID><Severity>1</Severity><Name>Web Server Misconfiguration: Unprotected Directory</Name><ReportSection><Name>Summary</Name><SectionText><![CDATA[IIS/Microsoft product directories were discovered within your web application during a Directory Enumeration scan. Risks associated with an attacker discovering a directory on your application server depend upon what type of directory is discovered, and what types of files are contained within it.  The primary threat, other than accessing files containing sensitive information, is that an attacker can utilize the information discovered in that directory to perform other types of attacks.  Recommendations include restricting access to important directories or files by adopting a "need to know" requirement for both the document and server root, and turning off features such as Automatic Directory Listings that provide information that could be utilized by an attacker when formulating or conducting an attack. ]]></SectionText></ReportSection><ReportSection><Name>Implication</Name><SectionText></SectionText></ReportSection><ReportSection><Name>Execution</Name><SectionText></SectionText></ReportSection><ReportSection><Name>Fix</Name><SectionText><![CDATA[<br /><b>For Security Operations:</b><br />
+You should evaluate the production requirements for the found directory.  If the directory is not required for production operation, then the directory and its contents should be removed or restricted by a server access control mechanism.  More information about implementing access control schemes can be found in the References.  Automatic directory indexing should also be disabled, if applicable.
+
+<br /><br /><b>For Development:</b><br />
+This problem will be resolved by the web application  server administrator.  In general, do not rely on 'hidden' directories within the web root that can contain sensitive resources or web applications.  Assume an attacker knows about the existence of all directories and files on your web site, and protect them with proper access controls.
+
+<br /><br /><b>For QA:</b><br />
+This problem will be resolved by the web application  server administrator.]]></SectionText></ReportSection><ReportSection><Name>Reference Info</Name><SectionText><![CDATA[<br /><b>Implementing Basic Authentication in IIS</b><br /><a href="http://www.microsoft.com/technet/prodtechnol/WindowsServer2003/Library/IIS/abbca505-6f63-4267-aac1-1ea89d861eb4.mspx">http://www.microsoft.com/technet/prodtechnol/WindowsServer2003/Library/IIS/a
+
+bbca505-6f63-4267-aac1-1ea89d861eb4.mspx</a>]]></SectionText></ReportSection><HighlightSelections><Selection><Index>4</Index><Length>15</Length></Selection></HighlightSelections><RawResponse><![CDATA[HTTP/1.1 403 Forbidden
+Cache-Control: private
+Content-Type: text/html; charset=utf-8
+Server: Microsoft-IIS/10.0
+X-Powered-By: ASP.NET
+Date: Tue, 31 Dec 2019 15:49:29 GMT
+Content-Length: 5091
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<title>IIS 10.0 Detailed Error - 403.14 - Forbidden</title> 
+<style type="text/css"> 
+<!-- 
+body{margin:0;font-size:.7em;font-family:Verdana,Arial,Helvetica,sans-serif;} 
+code{margin:0;color:#006600;font-size:1.1em;font-weight:bold;} 
+.config_source code{font-size:.8em;color:#000000;} 
+pre{margin:0;font-size:1.4em;word-wrap:break-word;} 
+ul,ol{margin:10px 0 10px 5px;} 
+ul.first,ol.first{margin-top:5px;} 
+fieldset{padding:0 15px 10px 15px;word-break:break-all;} 
+.summary-container fieldset{padding-bottom:5px;margin-top:4px;} 
+legend.no-expand-all{padding:2px 15px 4px 10px;margin:0 0 0 -12px;} 
+legend{color:#333333;;margin:4px 0 8px -12px;_margin-top:0px; 
+font-weight:bold;font-size:1em;} 
+a:link,a:visited{color:#007EFF;font-weight:bold;} 
+a:hover{text-decoration:none;} 
+h1{font-size:2.4em;margin:0;color:#FFF;} 
+h2{font-size:1.7em;margin:0;color:#CC0000;} 
+h3{font-size:1.4em;margin:10px 0 0 0;color:#CC0000;} 
+h4{font-size:1.2em;margin:10px 0 5px 0; 
+}#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:"trebuchet MS",Verdana,sans-serif; 
+ color:#FFF;background-color:#5C87B2; 
+}#content{margin:0 0 0 2%;position:relative;} 
+.summary-container,.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;} 
+.content-container p{margin:0 0 10px 0; 
+}#details-left{width:35%;float:left;margin-right:2%; 
+}#details-right{width:63%;float:left;overflow:hidden; 
+}#server_version{width:96%;_height:1px;min-height:1px;margin:0 0 5px 0;padding:11px 2% 8px 2%;color:#FFFFFF; 
+ background-color:#5A7FA5;border-bottom:1px solid #C1CFDD;border-top:1px solid #4A6C8E;font-weight:normal; 
+ font-size:1em;color:#FFF;text-align:right; 
+}#server_version p{margin:5px 0;} 
+table{margin:4px 0 4px 0;width:100%;border:none;} 
+td,th{vertical-align:top;padding:3px 0;text-align:left;font-weight:normal;border:none;} 
+th{width:30%;text-align:right;padding-right:2%;font-weight:bold;} 
+thead th{background-color:#ebebeb;width:25%; 
+}#details-right th{width:20%;} 
+table tr.alt td,table tr.alt th{} 
+.highlight-code{color:#CC0000;font-weight:bold;font-style:italic;} 
+.clear{clear:both;} 
+.preferred{padding:0 5px 2px 5px;font-weight:normal;background:#006633;color:#FFF;font-size:.8em;} 
+--> 
+</style> 
+ 
+</head> 
+<body> 
+<div id="content"> 
+<div class="content-container"> 
+  <h3>HTTP Error 403.14 - Forbidden</h3> 
+  <h4>The Web server is configured to not list the contents of this directory.</h4> 
+</div> 
+<div class="content-container"> 
+ <fieldset><h4>Most likely causes:</h4> 
+  <ul> 	<li>A default document is not configured for the requested URL, and directory browsing is not enabled on the server.</li> </ul> 
+ </fieldset> 
+</div> 
+<div class="content-container"> 
+ <fieldset><h4>Things you can try:</h4> 
+  <ul> 	<li>If you do not want to enable directory browsing, ensure that a default document is configured and that the file exists.</li> 	<li>           Enable directory browsing using IIS Manager.           <ol> 			<li>Open IIS Manager.</li> 			<li>In the Features view, double-click Directory Browsing.</li> 			<li>On the Directory Browsing page, in the Actions pane, click Enable.</li> 		</ol> 	</li> 	<li>Verify that the configuration/system.webServer/directoryBrowse@enabled attribute is set to true in the site or application configuration file.</li> </ul> 
+ </fieldset> 
+</div> 
+ 
+<div class="content-container"> 
+ <fieldset><h4>Detailed Error Information:</h4> 
+  <div id="details-left"> 
+   <table border="0" cellpadding="0" cellspacing="0"> 
+    <tr class="alt"><th>Module</th><td>&nbsp;&nbsp;&nbsp;DirectoryListingModule</td></tr> 
+    <tr><th>Notification</th><td>&nbsp;&nbsp;&nbsp;ExecuteRequestHandler</td></tr> 
+    <tr class="alt"><th>Handler</th><td>&nbsp;&nbsp;&nbsp;StaticFile</td></tr> 
+    <tr><th>Error Code</th><td>&nbsp;&nbsp;&nbsp;0x00000000</td></tr> 
+     
+   </table> 
+  </div> 
+  <div id="details-right"> 
+   <table border="0" cellpadding="0" cellspacing="0"> 
+    <tr class="alt"><th>Requested URL</th><td>&nbsp;&nbsp;&nbsp;http://127.0.0.1:80/aspnet_client/</td></tr> 
+    <tr><th>Physical Path</th><td>&nbsp;&nbsp;&nbsp;C:\inetpub\wwwroot\aspnet_client\</td></tr> 
+    <tr class="alt"><th>Logon Method</th><td>&nbsp;&nbsp;&nbsp;Anonymous</td></tr> 
+    <tr><th>Logon User</th><td>&nbsp;&nbsp;&nbsp;Anonymous</td></tr> 
+     
+   </table> 
+   <div class="clear"></div> 
+  </div> 
+ </fieldset> 
+</div> 
+ 
+<div class="content-container"> 
+ <fieldset><h4>More Information:</h4> 
+  This error occurs when a document is not specified in the URL, no default document is specified for the Web site or application, and directory listing is not enabled for the Web site or application. This setting may be disabled on purpose to secure the contents of the server. 
+  <p><a href="http://go.microsoft.com/fwlink/?LinkID=62293&amp;IIS70Error=403,14,0x00000000,14393">View more information &raquo;</a></p> 
+   
+ </fieldset> 
+</div> 
+</div> 
+</body> 
+</html> 
+]]></RawResponse></Issue></Issues></Scan>
